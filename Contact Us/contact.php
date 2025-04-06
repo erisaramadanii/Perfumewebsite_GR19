@@ -1,62 +1,74 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Na Kontakto</title>
+    <link rel="stylesheet" href="style.css"> <!-- opsionale -->
+</head>
+<body>
+
 <?php
 // Variablat
-$name = $email = $phone = $date = $message = "";
-$errors = [];
+$name = $email = $message = "";
+$nameErr = $emailErr = $msgErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Validimi i emrit
-    if (!preg_match("/^[A-ZÇËa-zçë ]{2,30}$/", $_POST["name"])) {
-        $errors[] = "Emri duhet të përmbajë vetëm shkronja.";
+    // Validimi i emrit
+    if (empty($_POST["name"])) {
+        $nameErr = "Emri është i detyrueshëm";
     } else {
-        $name = htmlspecialchars($_POST["name"]);
+        $name = test_input($_POST["name"]);
+        if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
+            $nameErr = "Vetëm shkronja dhe hapsira lejohen";
+        }
     }
 
-    // 2. Validimi i email-it
-    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Email-i nuk është i vlefshëm.";
+    // Validimi i emailit
+    if (empty($_POST["email"])) {
+        $emailErr = "Email-i është i detyrueshëm";
     } else {
-        $email = $_POST["email"];
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Format i pavlefshëm email-i";
+        }
     }
 
-    // 3. Numri i telefonit (vetëm numra dhe 8-12 shifra)
-    if (!preg_match("/^\d{8,12}$/", $_POST["phone"])) {
-        $errors[] = "Numri i telefonit nuk është valid.";
+    // Validimi i mesazhit
+    if (empty($_POST["message"])) {
+        $msgErr = "Mesazhi është i detyrueshëm";
     } else {
-        $phone = $_POST["phone"];
+        $message = test_input($_POST["message"]);
+        // Mund të shtuam edhe ndonjë RegEx tjetër nëse don
     }
 
-    // 4. Data (yyyy-mm-dd)
-    if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $_POST["date"])) {
-        $errors[] = "Data nuk është në formatin e duhur.";
-    } else {
-        $date = $_POST["date"];
+    // Nëse s’ka errora, shfaq të dhënat ose ruaj
+    if ($nameErr == "" && $emailErr == "" && $msgErr == "") {
+        echo "<p class='success'>Faleminderit, $name! Mesazhi juaj u dërgua me sukses. 📬</p>";
     }
+}
 
-    // 5. Ndërrim simbolesh në mesazh
-    $message = str_replace("!", ".", $_POST["message"]);
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 ?>
 
 <h2>Na Kontakto</h2>
-<form method="post" action="">
-    Emri: <input type="text" name="name" required><br><br>
-    Email: <input type="email" name="email" required><br><br>
-    Telefoni: <input type="text" name="phone" required><br><br>
-    Data: <input type="date" name="date" required><br><br>
-    Mesazhi: <textarea name="message" required></textarea><br><br>
-    <input type="submit" value="Dergo">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    Emri: <input type="text" name="name" value="<?= $name ?>">
+    <span class="error"><?= $nameErr ?></span><br><br>
+
+    Email: <input type="text" name="email" value="<?= $email ?>">
+    <span class="error"><?= $emailErr ?></span><br><br>
+
+    Mesazhi: <textarea name="message"><?= $message ?></textarea>
+    <span class="error"><?= $msgErr ?></span><br><br>
+
+    <input type="submit" value="Dërgo">
 </form>
 
-<?php
-if (!empty($errors)) {
-    echo "<ul style='color:red;'>";
-    foreach ($errors as $e) {
-        echo "<li>$e</li>";
-    }
-    echo "</ul>";
-} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "<p style='color:green;'>Faleminderit $name! Mesazhi u pranua me sukses.</p>";
-}
-?>
-<a href="contactus/contact.php">Na Kontakto</a>
-
+</body>
+</html>
