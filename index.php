@@ -1,4 +1,16 @@
+<?php
+include 'data.php';
 
+$search_results = [];
+if (isset($_GET['query'])) {
+    $query = strtolower($_GET['query']);
+    foreach ($products as $product) {
+        if (strpos(strtolower($product['name']), $query) !== false) {
+            $search_results[] = $product;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,14 +42,28 @@
             <li><a href="Contactus.php">Contact Us</a></li>
             <!-- Butoni për kërkim -->
             <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      
+  
 
-<div class="search-container">
-  <input type="text" id="search-input" placeholder="Search product...">
-  <span class="fas fa-search icon" ></span>
+            <form action="search.php" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Search products..." value="<?= isset($_GET['query']) ? htmlspecialchars($_GET['query']) : '' ?>">
+        <button type="submit"></button>
+    </form>
 
 
-  </div>
- 
+    <div class="product-grid">
+        <?php if (!empty($search_results)): ?>
+            <?php foreach ($search_results as $product): ?>
+                <div class="product">
+                    <img src="<?= $product['image'] ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                    <h4><?= htmlspecialchars($product['name']) ?></h4>
+                    <p>€ <?= number_format($product['price'], 2) ?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php elseif (isset($_GET['query'])): ?>
+            <p style="text-align:center;">S’ka produkte për: <strong><?= htmlspecialchars($_GET['query']) ?></strong></p>
+        <?php endif; ?>
+    </div>
 
         <button class="button-style">Order Now</button></div>
 
