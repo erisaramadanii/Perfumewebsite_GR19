@@ -88,7 +88,7 @@ color: #524f4f;
 
 
 #image-container-1{
-    background-image: url('../images/first-image.png');
+    background-image: url('images/first-image.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -325,3 +325,25 @@ padding: 20px;
     cursor: pointer;
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+  .section {
+    padding: 100px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .image-box {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+  }
+  .image-box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+input[type='submit']    {
+    background: pink;
+    color: white;
+    padding: 10px;
+    border-radius: 10%;
+}
