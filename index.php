@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<script src="script.js"></script>
     <div class="intro-video">
-        <video autoplay  loop playsinline>
-            <source src="intro.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline>
+            <source src="videoparfume.mp4" type="video/mp4">
             </video>
             <div class="video-overlay-text">
                 <h1>Welcome to Jean Paul Gaultier</h1>
@@ -30,10 +31,13 @@
             <!-- Butoni për kërkim -->
             <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-            <div class="search-container">
-  <input type="text" placeholder="search product...">
-  <span class="fas fa-search icon"></span>
-</div>
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="Search product...">
+  <span class="fas fa-search icon" ></span>
+
+
+  </div>
+ 
 
         <button class="button-style">Order Now</button></div>
 
@@ -42,8 +46,8 @@
         <a id = "logo" href="#">Jean Paul Gaultier</a>
         <div class="nav-bar-links">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-              </svg>
+<!--                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+-->              </svg>
         </div>
     </nav>
     
@@ -98,34 +102,91 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container-4">
         <h1 class="big-text">Our products</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Feel the fresh scent escape, awakening your senses...</p>
         <div>
+            
             <ul>
-                <li><a href="#">Floral</a></li>
-                <li><a href="#">Woody</a></li>
-                <li><a href="#">Fruity</a></li>
-                <li><a href="#">Fresh</a></li>
-        </ul>
+            <li><a href="#floral">Floral</a></li>
+            <li><a href="#woody">Woody</a></li>
+            <li><a href="#fruity">Fruity</a></li>
+            <li><a href="#fresh">Fresh</a></li>
+            </ul>
     </div>
+    <div id="floral" class="section">
+    <h2>Floral</h2>
+    <h3>For Women</h3>
 
-    <div class="container-4-collection">
-        <img src="images/perfume-image1.jpg" alt="">
-       <img src="images/perfume-image2.jpg" alt="">
-        <img src="images/perfume-image3.jpg" alt="">
-        <img src="images/perfume-image4.jpg" alt="">
-        <img src="images/perfume-image5.jpg" alt="">
-        <img src="images/perfume-image6.jpg" alt="">
+ <img src="parfum9.png" width="400" height="450" alt="">
+ <img src="divine.jpg" width="400" height="450" alt="">
+ <img src="parfum8.png" width="400" height="450" alt="">
+ <p>Fragrance is the voice of flowers-soft, sweet, unforgettable.</p>
+ <h3>For Men</h3>
+ <img src="man1.png" width="400" height="450" alt="">
+ <img src="man2.png" width="400" height="450" alt="">
+ <img src="man6.png" width="400" height="450" alt="">
+</div>
+
+<div id="woody" class="section">
+<h2>Woody</h2>
+<h3>For Women</h3>
+
+  <img src="parfum3.png" width="400" height="450" alt="">
+  <img src="red.png" width="400" height="450" alt="">
+  <img src="parfum4.png" width="400" height="450" alt="">
+
+  <p>Rooted in the earth, rising with mystery....</p>
+  <h3>For Men</h3>
+ <img src="man6.png" width="400" height="450" alt="">
+ <img src="man9.png" width="400" height="450" alt="">
+ <img src="man3.png" width="400" height="450" alt="">
+</div>
+
+<div id="fruity" class="section">
+<h2>Fruity</h2>
+<h3>For Women</h3>
+
+<img src="parfum6.png" width="400" height="450" alt="">
+<img src="parfum7.png" width="400" height="450" alt="">
+<img src="parfum10.png" width="400" height="450" alt="">
+
+  <p>Let your scent be the sweetest secret.</p>
+  <h3>For Men</h3>
+ <img src="man8.png" width="400" height="450" alt="">
+ <img src="man7.png" width="400" height="450" alt="">
+ <img src="man5.png" width="400" height="450" alt="">
+</div>
+
+<div id="fresh" class="section">
+  <h2>Fresh</h2>
+  <h3>For Women</h3>
+
+  <img src="parfum11.png" width="400" height="450" alt="">
+  <img src="gold.png" width="400" height="450" alt="">
+  <img src="freshblue.png" width="400" height="450" alt="">
+  <p>A breath of clarity in every spray...</p>
+  <h3>For Men</h3>
+ <img src="white.png" width="400" height="450" alt="">
+ <img src="man4.png" width="400" height="450" alt="">
+ <img src="man1.png" width="400" height="450" alt="">
+
+</div>
+
+
+   
     </div>
-    </div>
+    <div class="image-box hidden">
+  <img src="floral.jpg" alt="Floral">
+  <p>Floral Perfume</p>
+</div>
 
     <footer id="footer">
         <div>
-            <h1 class="big-text">Essence</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo architecto ut veritatis illum quaerat. Ea similique harum repellat excepturi! Consequuntur iusto deserunt accusantium tempore ullam.</p>
-            <p>&copy; 2024 Essence - All rights Reserved</p>
+            <h1 class="big-text">Jean Paul Gaultier</h1>
+            <p>The irrepressible Jean Paul Gaultier has been creating inclusive fashion since 1976. From growing up in the suburbs, his extraordinary destiny has seen him become one of the greatest couturiers in the world, without attending fashion school. Thanks to his audacity, talent, irreverence and humour, of course!</p>
+            <p>&copy; 2024 Jean Paul Gaultier - All rights Reserved</p>
             
         </div>
         <div>
@@ -143,8 +204,8 @@
         <div>
             <h2 class="big-text">Contact Us </h2>
             <p>Tel: (+12) 345 678 910</p>               
-            <p>Email: info@essence.com</p>             
-            <p>Address: 12345 Street Name, City Name, Country</p>
+            <p>Email: info@jeanpaulgaultier.com</p>             
+            <p>Address: 12345 MalYane Street, NYC, USA</p>
                 
         </div>
     </footer>
