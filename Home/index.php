@@ -99,7 +99,8 @@ if (isset($_GET['query'])) {
         <div class="container-text">
             <h2 class="big-text">Why shop with<br> Jean Paul Gaultier</h2>
             <p> Our team is dedicated to providing outstanding service, answering questions promptly, and ensuring you have a smooth shopping experience.</p>
-            <button class="button-style">Read More</button>
+            <a href="https://www.jeanpaulgaultier.com/ww/en/gaultier-universe/the-designer">
+            <button class="button-style">Read more...</button>
         </div>
         </div>
         <section class="video-hero">
@@ -117,6 +118,7 @@ if (isset($_GET['query'])) {
 </a>  </div>
 </section>
 <br><br><br>
+
 <div class="container">
     <div class="left">
       <img src="model.jpg" alt="Scandal Express">
