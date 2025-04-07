@@ -23,7 +23,7 @@ if (isset($_GET['query'])) {
 <script src="script.js"></script>
     <div class="intro-video">
         <video autoplay muted loop playsinline>
-            <source src="introvid.mp4" type="video/mp4">
+            <source src="Images/intro.mp4" type="video/mp4">
             </video>
             <div class="video-overlay-text">
                 <h1>Welcome to Jean Paul Gaultier</h1>
@@ -84,7 +84,7 @@ if (isset($_GET['query'])) {
             </p>
                   </div>
         <div id="image-container-1">
-            <!-- <img src="images/first-image.png" alt="image"> -->
+            <!-- <img src="Images/first-image.png" alt="image"> -->
         </div>
     </div>
 
@@ -105,7 +105,7 @@ if (isset($_GET['query'])) {
         </div>
         <section class="video-hero">
   <video autoplay muted loop playsinline class="background-video">
-    <source src="divinevideo.mp4" type="video/mp4" />
+    <source src="Images/divinevideo.mp4" type="video/mp4" />
   </video>
   <div class="overlay-box">
     <h1>LE DIVINE <br> ELIXIR</h1>
@@ -121,7 +121,7 @@ if (isset($_GET['query'])) {
 
 <div class="container">
     <div class="left">
-      <img src="model.jpg" alt="Scandal Express">
+      <img src="Images/model.jpg" alt="Scandal Express">
     </div>
     <div class="right">
       <h1>PLAY THE GAME OF<br>SCANDAL EXPRESS</h1>
