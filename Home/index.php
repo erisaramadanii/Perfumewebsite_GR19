@@ -189,12 +189,22 @@ if (isset($_GET['query'])) {
             <p>Monday: Friday: 10.00 - 23.00 
                 <br>
                 Saturday: 10.00 - 19.00</p>
-                <div id="social-logos">
-                    <img src="logos/facebook.png" alt="">
-                    <img src="logos/instagram.png" alt="">
-                    <img src="logos/twitter.png" alt="">
-                    <img src="logos/pinterest.png" alt="">
-                </div>
+                
+<div id="social-logos">
+  <a href="https://www.facebook.com/jean.paul.gaultier/" target="_blank">
+    <img src="logos/facebook.png" alt="Facebook">
+  </a>
+  <a href="https://www.instagram.com/jeanpaulgaultier/" target="_blank">
+    <img src="logos/instagram.png" alt="Instagram">
+  </a>
+  <a href="https://x.com/jpgaultier?lang=en" target="_blank">
+    <img src="logos/twitter.png" alt="Twitter">
+  </a>
+  <a href="https://www.pinterest.com/vlady580/jean-paul-gaultier-fragrances/" target="pinterest">
+    <img src="logos/pinterest.png" alt="">
+ </a>
+</div>
+
         </div>
         <div>
             <h2 class="big-text">Contact Us </h2>
