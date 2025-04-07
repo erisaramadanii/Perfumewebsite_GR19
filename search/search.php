@@ -20,12 +20,11 @@ $products = [
     ["name" => "La belle", "image" => "parfum10.png", "price" => "170.99"],
     ["name" => "La belle", "image" => "parfum11.png", "price" => "199.99"],
     ["name" => "La belle", "image" => "parfum12.png", "price" => "145.99"],
-
-
-    // shto produkte tjera këtu
 ];
 
-$query = strtolower($_GET['query']);
+$query = isset($_GET['query']) ? strtolower($_GET['query']) : '';
+$sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+
 $results = [];
 
 foreach ($products as $product) {
@@ -33,29 +32,52 @@ foreach ($products as $product) {
         $results[] = $product;
     }
 }
+
+// Sortimi në bazë të çmimit
+if ($sort === 'price_asc') {
+    usort($results, fn($a, $b) => $a['price'] <=> $b['price']);
+} elseif ($sort === 'price_desc') {
+    usort($results, fn($a, $b) => $b['price'] <=> $a['price']);
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
     <meta charset="UTF-8">
-    <title>Results for "<?php echo htmlspecialchars($query); ?>"</title>
+    <title>Rezultatet për "<?php echo htmlspecialchars($query); ?>"</title>
     <link rel="stylesheet" href="search.css">
+   
 </head>
 <body>
-    <h1>Results for "<?php echo htmlspecialchars($query); ?>"</h1>
 
-    <div class="product-grid">
-        <?php foreach ($results as $product): ?>
-            <div class="product-card">
-                <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
-                <p class="name"><?php echo $product['name']; ?></p>
-                <p class="price">€ <?php echo $product['price']; ?></p>
-            </div>
-        <?php endforeach; ?>
+<h1>Rezultatet për "<?php echo htmlspecialchars($query); ?>"</h1>
 
-        <?php if (empty($results)) echo "<p>No products found.</p>"; ?>
-    </div>
+<!-- Dropdown për sortim -->
+<div class="sort-form">
+    <form method="get">
+        <input type="hidden" name="query" value="<?php echo htmlspecialchars($query); ?>">
+        <label for="sort">Radhit sipas:</label>
+        <select name="sort" id="sort" onchange="this.form.submit()">
+            <option value="">Radhit sipas</option>
+            <option value="price_asc" <?php if ($sort === 'price_asc') echo 'selected'; ?>>Çmimi më i lirë</option>
+            <option value="price_desc" <?php if ($sort === 'price_desc') echo 'selected'; ?>>Çmimi më i lartë</option>
+        </select>
+    </form>
+</div>
+
+<!-- Produktet -->
+<div class="product-grid">
+    <?php foreach ($results as $product): ?>
+        <div class="product-card">
+            <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" width="150">
+            <p class="name"><?php echo $product['name']; ?></p>
+            <p class="price">€ <?php echo $product['price']; ?></p>
+        </div>
+    <?php endforeach; ?>
+
+    <?php if (empty($results)) echo "<p>No products found.</p>"; ?>
+</div>
+
 </body>
 </html>
-
