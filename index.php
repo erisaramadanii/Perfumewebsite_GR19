@@ -50,13 +50,13 @@ if (isset($_GET['query'])) {
         <button type="submit"></button>
     </form>
 
-
     <div class="product-grid">
         <?php if (!empty($search_results)): ?>
             <?php foreach ($search_results as $product): ?>
                 <div class="product">
-                    <img src="<?= $product['image'] ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                    <h4><?= htmlspecialchars($product['name']) ?></h4>
+                <img src="<?= htmlspecialchars($result['image']) ?>" alt="<?= htmlspecialchars($result['name']) ?>">
+                <h4>
+                    <?= htmlspecialchars($product['name']) ?></h4>
                     <p>€ <?= number_format($product['price'], 2) ?></p>
                 </div>
             <?php endforeach; ?>
@@ -64,6 +64,7 @@ if (isset($_GET['query'])) {
             <p style="text-align:center;">S’ka produkte për: <strong><?= htmlspecialchars($_GET['query']) ?></strong></p>
         <?php endif; ?>
     </div>
+  
 
         <button class="button-style">Order Now</button></div>
 
@@ -200,13 +201,7 @@ if (isset($_GET['query'])) {
 
 </div>
 
-
-   
-    </div>
-    <div class="image-box hidden">
-  <img src="floral.jpg" alt="Floral">
-  <p>Floral Perfume</p>
-</div>
+<br><br><br>
 
     <footer id="footer">
         <div>
