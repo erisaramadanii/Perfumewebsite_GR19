@@ -1,4 +1,5 @@
 
+
 body{
     padding: 0;
     margin: 0;
@@ -224,12 +225,6 @@ padding: 20px;
     text-decoration: none;
     color: #3e3c3c;
 }
-.container-4 ul li:nth-child(1){
-    text-decoration: underline rgba(165, 102, 102, 0.765) 3px;
-}
-.container-4 a:hover {
-    text-decoration: underline rgba(165, 102, 102, 0.765) 3px;
-}
 
 .container-4 h1, p{
     padding: 10px;
@@ -443,7 +438,9 @@ padding: 20px;
     object-fit: cover;
     z-index: -1;
   }
-  
+  .overlay-box{
+    text-decoration: none;
+  }
   .overlay-box {
     position: absolute;
     top: 50%;
@@ -454,20 +451,27 @@ padding: 20px;
     padding: 40px;
     max-width: 400px;
     font-family: 'Arial Black', sans-serif;
+    text-decoration: none;
   }
   
   .overlay-box h1 {
+    color:white;
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 20px;
     line-height: 1.1;
+    text-decoration: none;
+
   }
   
   .overlay-box p {
+    color:white;
     font-family: monospace;
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 20px;
+    text-decoration: none;
+
   }
   
   .overlay-box button {
