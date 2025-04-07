@@ -23,7 +23,7 @@ if (isset($_GET['query'])) {
 <script src="script.js"></script>
     <div class="intro-video">
         <video autoplay muted loop playsinline>
-            <source src="videoparfume.mp4" type="video/mp4">
+            <source src="introvid.mp4" type="video/mp4">
             </video>
             <div class="video-overlay-text">
                 <h1>Welcome to Jean Paul Gaultier</h1>
@@ -36,7 +36,6 @@ if (isset($_GET['query'])) {
             <ul>
             <li><a href="home.php">Home</a></li>
             <li><a href="Products.php">Products</a></li>
-            <li><a href="Brands.php">Brands</a></li>
             <li><a href="BestSellers.php">Best Sellers</a></li>
             <li><a href="Newarrivals.php">New Arrivals</a></li>
             <li><a href="Contactus.php">Contact Us</a></li>
@@ -102,7 +101,48 @@ if (isset($_GET['query'])) {
             <p> Our team is dedicated to providing outstanding service, answering questions promptly, and ensuring you have a smooth shopping experience.</p>
             <button class="button-style">Read More</button>
         </div>
+        </div>
+        <section class="video-hero">
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="divinevideo.mp4" type="video/mp4" />
+  </video>
+  <div class="overlay-box">
+    <h1>LE DIVINE <br> ELIXIR</h1>
+    <p>
+    Jean Paul Gaultier's Divine perfume is an exquisite blend of floral and oriental notes, creating an intoxicating and luxurious fragrance.<br>
+     It embodies sophistication and sensuality, making it a perfect choice for those seeking elegance and allure in every drop.
+    </p>
+    <a href="https://www.jeanpaulgaultier.com/ww/en/scandal-intense">
+  <button>I'M COMING ABOARD</button>
+</a>  </div>
+</section>
+<br><br><br>
+<div class="container">
+    <div class="left">
+      <img src="model.jpg" alt="Scandal Express">
     </div>
+    <div class="right">
+      <h1>PLAY THE GAME OF<br>SCANDAL EXPRESS</h1>
+      <p>
+        Ladies and Gentlemen, welcome aboard<br>
+        the Scandal Express, Jean Paul<br>
+        Gaultier’s private night train where<br>
+        nobody ever sleeps. Your one-way<br>
+        journey to decadence starts here with<br>
+        rowdy passengers and endless fun. So<br>
+        open the door to desire and join the<br>
+        party.
+      </p>
+      <p>
+        All aboard! It's going to be a long<br>
+        night and an eventful ride.
+      </p>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/scandal-intense-game"><button>I'M GETTING ON</button></a>
+    </div>
+  </div>
+
+
+
 
     <div class="container-3">
         <h1 class="large-text">Our Services</h1>
@@ -129,77 +169,11 @@ if (isset($_GET['query'])) {
             </div>
         </div>
     </div>
-    
-    <div class="container-4">
-        <h1 class="big-text">Our products</h1>
-        <p>Feel the fresh scent escape, awakening your senses...</p>
-        <div>
-            
-            <ul>
-            <li><a href="#floral">Floral</a></li>
-            <li><a href="#woody">Woody</a></li>
-            <li><a href="#fruity">Fruity</a></li>
-            <li><a href="#fresh">Fresh</a></li>
-            </ul>
-    </div>
-    <div id="floral" class="section">
-    <h2>Floral</h2>
-    <h3>For Women</h3>
 
- <img src="parfum9.png" width="400" height="450" alt="">
- <img src="divine.jpg" width="400" height="450" alt="">
- <img src="parfum8.png" width="400" height="450" alt="">
- <p>Fragrance is the voice of flowers-soft, sweet, unforgettable.</p>
- <h3>For Men</h3>
- <img src="man1.png" width="400" height="450" alt="">
- <img src="man2.png" width="400" height="450" alt="">
- <img src="man6.png" width="400" height="450" alt="">
-</div>
+  
 
-<div id="woody" class="section">
-<h2>Woody</h2>
-<h3>For Women</h3>
 
-  <img src="parfum3.png" width="400" height="450" alt="">
-  <img src="red.png" width="400" height="450" alt="">
-  <img src="parfum4.png" width="400" height="450" alt="">
-
-  <p>Rooted in the earth, rising with mystery....</p>
-  <h3>For Men</h3>
- <img src="man6.png" width="400" height="450" alt="">
- <img src="man9.png" width="400" height="450" alt="">
- <img src="man3.png" width="400" height="450" alt="">
-</div>
-
-<div id="fruity" class="section">
-<h2>Fruity</h2>
-<h3>For Women</h3>
-
-<img src="parfum6.png" width="400" height="450" alt="">
-<img src="parfum7.png" width="400" height="450" alt="">
-<img src="parfum10.png" width="400" height="450" alt="">
-
-  <p>Let your scent be the sweetest secret.</p>
-  <h3>For Men</h3>
- <img src="man8.png" width="400" height="450" alt="">
- <img src="man7.png" width="400" height="450" alt="">
- <img src="man5.png" width="400" height="450" alt="">
-</div>
-
-<div id="fresh" class="section">
-  <h2>Fresh</h2>
-  <h3>For Women</h3>
-
-  <img src="parfum11.png" width="400" height="450" alt="">
-  <img src="gold.png" width="400" height="450" alt="">
-  <img src="freshblue.png" width="400" height="450" alt="">
-  <p>A breath of clarity in every spray...</p>
-  <h3>For Men</h3>
- <img src="white.png" width="400" height="450" alt="">
- <img src="man4.png" width="400" height="450" alt="">
- <img src="man1.png" width="400" height="450" alt="">
-
-</div>
+  
 
 <br><br><br>
 
