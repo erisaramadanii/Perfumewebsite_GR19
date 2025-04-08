@@ -37,8 +37,6 @@ if (isset($_GET['query'])) {
             <li><a href="home.php">Home</a></li>
             <li><a href="Products.php">Products</a></li>
             <li><a href="BestSellers.php">Best Sellers</a></li>
-            <li><a href="Newarrivals.php">New Arrivals</a></li>
-            <li><a href="Contactus.php">Contact Us</a></li>
             <!-- Butoni për kërkim -->
             <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
       
