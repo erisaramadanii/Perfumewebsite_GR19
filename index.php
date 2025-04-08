@@ -202,7 +202,7 @@ if (isset($_GET['query'])) {
     <img src="logos/twitter.png" alt="Twitter">
   </a>
   <a href="https://www.pinterest.com/vlady580/jean-paul-gaultier-fragrances/" target="pinterest">
-    <img src="logos/pinterest.png" alt="">
+    <img src="logos/pinterest.png" alt="Pinterest">
  </a>
 </div>
 
