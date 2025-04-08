@@ -9,11 +9,11 @@
             background-color: #f4f4f4;
             padding: 40px;
             position: relative;
-            background-image: url('https://ascotcosmetics.co.za/wp-content/uploads/2023/09/Jean-Paul-Gaultier-Divine-5.jpg'); /* Vendos URL-në e fotos */
-            background-size: cover; /* Imazhi do të mbulojë të gjithë ekranin */
-            background-position: center center; /* Imazhi do të pozicionohet në qendër */
-            background-repeat: no-repeat; /* Mos e përsërit imazhin */
-            height: 100vh; /* Përdorim të plotë të lartësisë së ekranit */
+            background-image: url('https://ascotcosmetics.co.za/wp-content/uploads/2023/09/Jean-Paul-Gaultier-Divine-5.jpg');
+            background-size: cover; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh; 
             margin: 0;
         }
         .order-form {
