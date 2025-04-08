@@ -183,7 +183,7 @@ if (isset($_GET['query'])) {
         <div>
             <h1 class="big-text">Jean Paul Gaultier</h1>
             <p>The irrepressible Jean Paul Gaultier has been creating inclusive fashion since 1976. From growing up in the suburbs, his extraordinary destiny has seen him become one of the greatest couturiers in the world, without attending fashion school. Thanks to his audacity, talent, irreverence and humour, of course!</p>
-            <p>&copy; 2024 Jean Paul Gaultier - All rights Reserved</p>
+            <p>&copy; Copyright Grupi19 - 2025</p>
             
         </div>
         <div>
