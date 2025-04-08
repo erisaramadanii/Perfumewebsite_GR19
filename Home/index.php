@@ -1,5 +1,5 @@
 <?php
-include 'data.php';
+
 
 $search_results = [];
 if (isset($_GET['query'])) {
@@ -65,7 +65,8 @@ if (isset($_GET['query'])) {
     </div>
   
 
-        <button class="button-style">Order Now</button></div>
+    <button class="button-style" onclick="window.location.href='ordernow.php';">Order Now</button>
+
 
         </nav>
     <nav class="nav-bar-responsive">
