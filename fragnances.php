@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Dropdown Menu</title>
+
+
   <style>
     /* Navbar container */
     .navbar {
@@ -297,24 +299,39 @@
       transform: scale(1.05); /* Efekti kur kalon mausi mbi foton */
     }
 
-    /* Teksti mbi fotot */
-    .six-photo-text {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 15px;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      text-align: center;
-      font-size: 18px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+   /* Teksti dhe butoni mbi foto */
+.six-photo-box .photo-name {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: white;
+    font-size: 18px; /* Slightly smaller text */
+    font-weight: bold;
+    visibility: hidden;
+}
 
-    .six-photo-box:hover .six-photo-text {
-      opacity: 1;
-    }
+.six-photo-box:hover .photo-name {
+    visibility: visible;
+}
+
+.shop-now-button {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    background-color: #ff4081;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    visibility: hidden;
+    transition: visibility 0.3s ease-in-out;
+}
+
+.six-photo-box:hover .shop-now-button {
+    visibility: visible;
+}
+
 
     /* Hapësira shtesë pas fotos 11 dhe poshtë fotos 12 dhe 13 */
     .spacer {
@@ -376,38 +393,41 @@
 <div class="fragrances-section">
   <h2>FRAGRANCES</h2>
 
-  <!-- Seksioni me 3 foto dhe tekst mbi to kur vendoset mausi -->
-  <div class="photo-row">
-    <div class="photo-box">
+<div class="six-photo-row">
+    <div class="six-photo-box">
       <img src="images/photo5.png">
-      <div class="photo-text">SCANDAL INTENSE</div>
+      <div class="photo-name">SCANDAL INTENSE</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
     </div>
-    <div class="photo-box">
+    <div class="six-photo-box">
       <img src="images/photo6.jpg">
-      <div class="photo-text">SCANDAL ABSOLUT</div>
+      <div class="photo-name">SCANDAL ABSOLUT</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
     </div>
-    <div class="photo-box">
+    <div class="six-photo-box">
       <img src="images/photo7.jpg">
-      <div class="photo-text">SCANDAL LE PARFUM</div>
+      <div class="photo-name">SCANDAL LE PARFUM</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
     </div>
   </div>
 
-  <!-- Seksioni i dytë me 3 foto -->
-  <div class="photo-row">
-    <div class="photo-box">
+  <div class="six-photo-row">
+    <div class="six-photo-box">
       <img src="images/photo8.jpg" alt="Foto 8">
-      <div class="photo-text">SCANDAL</div>
+      <div class="photo-name">SCANDAL</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
     </div>
-    <div class="photo-box">
+    <div class="six-photo-box">
       <img src="images/photo9.jpg" alt="Foto 9">
-      <div class="photo-text">SO SCANDAL!</div>
+      <div class="photo-name">SO SCANDAL!</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
     </div>
-    <div class="photo-box">
+    <div class="six-photo-box">
       <img src="images/photo10.jpg" alt="Foto 10">
-      <div class="photo-text">SCANDAL</div>
+      <div class="photo-name">SCANDAL</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
     </div>
   </div>
-</div>
 
 <!-- Hapësira shtesë pas fotove -->
 <div class="spacer"></div>
@@ -418,15 +438,14 @@
 <!-- Hapësira shtesë pas fotos 11 -->
 <div class="spacer"></div>
 
-<!-- Seksioni i ri me tekst dhe foto -->
-<div class="content-section">
-  <!-- Titulli dhe Paragrafi -->
-  <div class="text-box">
-    <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolu</div>
-    <p class="section-paragraph">
-      A scorching breeze strikes the Jean Paul Gaultier ship! Turning up the heat, Le Male Elixir Absolu sets every deck ablaze with its intense aura. Amid the steam of the machines, this new sailor sets the pace with his magnificent muscles, taking the lead. Divine, a captain of all destinies and adventurer driven by desire, this Male will become an obsession in no time.
-    </p>
-  </div>
+  <!-- Seksioni i ri me tekst dhe foto -->
+  <div class="content-section">
+    <div class="text-box">
+      <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolu</div>
+      <p class="section-paragraph">
+        A scorching breeze strikes the Jean Paul Gaultier ship! Turning up the heat, Le Male Elixir Absolu sets every deck ablaze with its intense aura...
+      </p>
+    </div>
 
   <!-- Fotoja -->
   <div class="image-box">
@@ -434,50 +453,58 @@
   </div>
 </div>
 
-<!-- Foto dhe paragraf i ri poshtë -->
 <div class="new-content-section">
-  <div class="new-text-box">
-    <div class="section-title">The Power of Scandal: A Fragrance for the Bold</div>
-    <p class="section-paragraph">
-      Set the scene for the evening with a fragrance that exudes power and confidence. The fresh, invigorating notes of Le Male Scandal will keep heads turning wherever you go. Don't just walk into a room; command it. Make every moment a scandalous affair.
-    </p>
-  </div>
+    <div class="new-text-box">
+      <div class="section-title">The Power of Scandal: A Fragrance for the Bold</div>
+      <p class="section-paragraph">
+        Set the scene for the evening with a fragrance that exudes power and confidence...
+      </p>
+    </div>
 
   <div class="new-image-box">
     <img src="images/photo13.jpg" alt="Le Male Scandal">
   </div>
 </div>
 
-<!-- Seksioni me 6 foto -->
-<div class="six-photo-row">
-  <div class="six-photo-box">
-    <img src="images/photo14.jpg" alt="Foto 14">
-    <div class="six-photo-text">PHOTO 14</div>
+  <!-- Seksioni me 3 foto të tjera -->
+  <div class="six-photo-row">
+    <div class="six-photo-box">
+      <img src="images/photo17.jpg" alt="Foto 17">
+      <div class="photo-name">SCANDAL NEW</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+    </div>
+    <div class="six-photo-box">
+      <img src="images/photo18.jpg" alt="Foto 18">
+      <div class="photo-name">SCANDAL LUXE</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+    </div>
+    <div class="six-photo-box">
+      <img src="images/photo19.jpg" alt="Foto 19">
+      <div class="photo-name">SO SCANDAL LUXE</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+    </div>
   </div>
-  <div class="six-photo-box">
-    <img src="images/photo15.jpg" alt="Foto 15">
-    <div class="six-photo-text">PHOTO 15</div>
-  </div>
-  <div class="six-photo-box">
-    <img src="images/photo16.jpg" alt="Foto 16">
-    <div class="six-photo-text">PHOTO 16</div>
-  </div>
-</div>
 
-<div class="six-photo-row">
-  <div class="six-photo-box">
-    <img src="images/photo17.jpg" alt="Foto 17">
-    <div class="six-photo-text">PHOTO 17</div>
+ <!-- Seksioni me 3 foto të tjera -->
+ <div class="six-photo-row">
+    <div class="six-photo-box">
+      <img src="images/photo14.jpg" alt="Foto 14">
+      <div class="photo-name">SCANDAL X</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+    </div>
+    <div class="six-photo-box">
+      <img src="images/photo15.jpg" alt="Foto 15">
+      <div class="photo-name">SO SCANDAL INTENSE</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+    </div>
+    <div class="six-photo-box">
+      <img src="images/photo16.jpg" alt="Foto 16">
+      <div class="photo-name">SCANDAL LE PARFUM</div>
+      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+    </div>
   </div>
-  <div class="six-photo-box">
-    <img src="images/photo18.jpg" alt="Foto 18">
-    <div class="six-photo-text">PHOTO 18</div>
-  </div>
-  <div class="six-photo-box">
-    <img src="images/photo19.jpg" alt="Foto 19">
-    <div class="six-photo-text">PHOTO 19</div>
-  </div>
-</div>
+
 </body>
 </html>
+
 
