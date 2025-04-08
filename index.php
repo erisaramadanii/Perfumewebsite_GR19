@@ -93,7 +93,7 @@ if (isset($_GET['query'])) {
             <p>Luxury Defined. One Drop at a Time.</p>
         </div>
         <div>
-            <img src="parfum2.png" alt="">
+            <img src="Images/parfum2.png" alt="">
         </div>
         <div class="container-text">
             <h2 class="big-text">Why shop with<br> Jean Paul Gaultier</h2>
