@@ -74,7 +74,7 @@
 
   <div class="overlay">
     <div class="discover-container">
-      <a href="fragrances.php" class="discover">Discover More</a>
+      <a href="fragnances.php" class="discover">Discover More</a>
     </div>
   </div>
 
