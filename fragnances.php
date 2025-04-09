@@ -337,6 +337,21 @@
     .spacer {
       height: 50px;
     }
+
+
+    #product-modal {
+  display: none;
+  position: absolute;  /* Po e vendosim në pozicion absolut për t'i përshtatur me butonin */
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1000;
+  width: 400px; /* Mund ta ndryshosh si të duash */
+}
+
+
+
   </style>
 </head>
 <body>
@@ -397,17 +412,17 @@
     <div class="six-photo-box">
       <img src="images/photo5.png">
       <div class="photo-name">SCANDAL INTENSE</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="ordernow.php" class="shop-now-button" data-img="images/photo5.png" data-price="100" data-name="SCANDAL INTENSE">SHOP NOW</a>
     </div>
     <div class="six-photo-box">
       <img src="images/photo6.jpg">
       <div class="photo-name">SCANDAL ABSOLUT</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <button class="shop-now-button" data-img="images/photo6.jpg" data-price="135" data-name="SCANDAL ABSOLUT">SHOP NOW</button>
     </div>
     <div class="six-photo-box">
       <img src="images/photo7.jpg">
       <div class="photo-name">SCANDAL LE PARFUM</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo7.jpg" data-price="130" data-name="SCANDAL LE PARFUM">SHOP NOW</a>
     </div>
   </div>
 
@@ -415,20 +430,26 @@
     <div class="six-photo-box">
       <img src="images/photo8.jpg" alt="Foto 8">
       <div class="photo-name">SCANDAL</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo8.jpg" data-price="140" data-name="SCANDAL">SHOP NOW</a>
     </div>
     <div class="six-photo-box">
       <img src="images/photo9.jpg" alt="Foto 9">
       <div class="photo-name">SO SCANDAL!</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <button class="shop-now-button" data-img="images/photo9.jpg" data-price="20.00" data-name="SO SCANDAL">SHOP NOW</button>
     </div>
     <div class="six-photo-box">
       <img src="images/photo10.jpg" alt="Foto 10">
       <div class="photo-name">SCANDAL</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo10.jpg" data-price="160" data-name="SCANDAL">SHOP NOW</a>
     </div>
   </div>
 
+
+
+
+
+
+  
 <!-- Hapësira shtesë pas fotove -->
 <div class="spacer"></div>
 
@@ -471,17 +492,17 @@
     <div class="six-photo-box">
       <img src="images/photo17.jpg" alt="Foto 17">
       <div class="photo-name">SCANDAL NEW</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo17.jpg" data-price="170" data-name="SCANDAL NEW">SHOP NOW</a>
     </div>
     <div class="six-photo-box">
       <img src="images/photo18.jpg" alt="Foto 18">
-      <div class="photo-name">SCANDAL LUXE</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <div class="photo-name">SCANDAL LUXE</div> 
+      <a href="#" class="shop-now-button" data-img="images/photo18.jpg" data-price="160" data-name="SCANDAL LUXE">SHOP NOW</a>
     </div>
     <div class="six-photo-box">
       <img src="images/photo19.jpg" alt="Foto 19">
       <div class="photo-name">SO SCANDAL LUXE</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo19.jpg" data-price="190" data-name="SO SCANDAL LUXE">SHOP NOW</a>
     </div>
   </div>
 
@@ -490,19 +511,106 @@
     <div class="six-photo-box">
       <img src="images/photo14.jpg" alt="Foto 14">
       <div class="photo-name">SCANDAL X</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo14.jpg" data-price="230" data-name="SCANDAL X">SHOP NOW</a>
     </div>
     <div class="six-photo-box">
       <img src="images/photo15.jpg" alt="Foto 15">
       <div class="photo-name">SO SCANDAL INTENSE</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo15.jpg" data-price="160" data-name="SO SCANDAL INTENSE">SHOP NOW</a>
     </div>
     <div class="six-photo-box">
       <img src="images/photo16.jpg" alt="Foto 16">
       <div class="photo-name">SCANDAL LE PARFUM</div>
-      <a href="shop.php" class="shop-now-button">SHOP NOW</a>
+      <a href="#" class="shop-now-button" data-img="images/photo16.jpg" data-price="160" data-name="SCANDAL LE PARFUM">SHOP NOW</a>
     </div>
   </div>
+</div>
+
+
+
+<!-- Modal për zgjedhjen e parfumeve -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <form action="ordernow.php" method="POST">
+      <img id="modal-img" src="" style="width: 100px;"><br>
+      <h2 id="modal-title"></h2>
+      <p>Çmimi: €<span id="modal-price"></span></p>
+
+      <label for="quantity">Sasia:</label>
+      <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
+
+      <label for="ml">ML:</label>
+      <select name="ml" id="ml">
+        <option value="30ml">30ml</option>
+        <option value="50ml">50ml</option>
+        <option value="100ml">100ml</option>
+      </select><br><br>
+
+      <input type="hidden" name="product_name" id="product_name">
+      <input type="hidden" name="product_img" id="product_img">
+      <input type="hidden" name="product_price" id="product_price">
+
+      <p>Total: €<span id="modal-total"></span></p>
+
+      <button type="submit">Porosit</button>
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+  const buttons = document.querySelectorAll('.shop-now-button');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Merr pozicionin e butonit
+      const buttonRect = this.getBoundingClientRect();
+      const img = this.getAttribute('data-img');
+      const price = parseFloat(this.getAttribute('data-price'));
+      const name = this.getAttribute('data-name');
+
+      // Vendos vlerat e modal-it
+      document.getElementById('modal-img').src = img;
+      document.getElementById('modal-title').innerText = name;
+      document.getElementById('modal-price').innerText = price.toFixed(2);
+      document.getElementById('modal-total').innerText = price.toFixed(2);
+      document.getElementById('product_name').value = name;
+      document.getElementById('product_img').value = img;
+      document.getElementById('product_price').value = price;
+
+      // Vendos pozicionin e modal-it aty ku është butoni
+      const modal = document.getElementById('product-modal');
+      modal.style.left = `${buttonRect.left}px`;  // Vendos pozicionin horizontal
+      modal.style.top = `${buttonRect.bottom + window.scrollY}px`;  // Vendos pozicionin vertikal
+
+      // Trego modal-in
+      modal.style.display = 'block';
+
+      // Funksion për përditësimin e çmimit total
+      document.getElementById('quantity').addEventListener('input', updateTotal);
+      document.getElementById('ml').addEventListener('change', updateTotal);
+
+      function updateTotal() {
+        const qty = parseInt(document.getElementById('quantity').value);
+        const total = qty * price;
+        document.getElementById('modal-total').innerText = total.toFixed(2);
+      }
+    });
+  });
+
+  window.closeModal = function() {
+    document.getElementById('product-modal').style.display = 'none';
+  }
+});
+
+
+</script>
 
 </body>
 </html>
