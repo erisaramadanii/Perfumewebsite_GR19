@@ -378,7 +378,7 @@
     </div>
   </div>
   <div class="navbar-item">
-    OFFERS
+  <a href="offers.php">OFFERS</a> 
     <div class="dropdown-menu">
       <a href="#">Today's Deals</a>
       <a href="#">Weekly Offers</a>
@@ -386,7 +386,7 @@
     </div>
   </div>
   <div class="navbar-item">
-    GIFTING
+  <a href="gifting.php">GIFTING</a> 
     <div class="dropdown-menu">
       <a href="#">Gift Sets</a>
       <a href="#">For Her</a>
@@ -532,7 +532,7 @@
 <div id="product-modal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">&times;</span>
-    <form action="ordernow.php" method="POST">
+    <form id="order-form" action="ordernow.php" method="POST">
       <img id="modal-img" src="" style="width: 100px;"><br>
       <h2 id="modal-title"></h2>
       <p>Çmimi: €<span id="modal-price"></span></p>
@@ -553,10 +553,12 @@
 
       <p>Total: €<span id="modal-total"></span></p>
 
+      <!-- Butoni për dërgimin e formularit -->
       <button type="submit">Porosit</button>
-    </form>
+    </form>  
   </div>
 </div>
+
 
 
 
@@ -614,5 +616,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
-
 
