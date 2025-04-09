@@ -36,14 +36,19 @@ foreach ($products as $product) {
 
 // Logjika e radhitjes
 if ($sort === 'price_asc') {
-    usort($results, fn($a, $b) => $a['price'] <=> $b['price']);
+    $prices = array_column($results, 'price');
+    array_multisort($prices, SORT_ASC, $results);
 } elseif ($sort === 'price_desc') {
-    usort($results, fn($a, $b) => $b['price'] <=> $a['price']);
+    $prices = array_column($results, 'price');
+    array_multisort($prices, SORT_DESC, $results);
 } elseif ($sort === 'name_asc') {
-    usort($results, fn($a, $b) => strcmp($a['name'], $b['name']));
+    $names = array_column($results, 'name');
+    array_multisort($names, SORT_ASC, $results);
 } elseif ($sort === 'name_desc') {
-    usort($results, fn($a, $b) => strcmp($b['name'], $a['name']));
+    $names = array_column($results, 'name');
+    array_multisort($names, SORT_DESC, $results);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="sq">
