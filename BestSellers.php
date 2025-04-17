@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jean Paul Gaultier Best Sellrs</title>
+    <title>Jean Paul Gaultier Best Sellers</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
 <?php
-// Array me produktet – të dhënat ruhen këtu
 $products = [
     [
         "name" => "Le Male Eau de Toilette",
         "description" => "Iconic fragrance with notes of lavender, mint, and vanilla.",
         "price" => 89.99,
-        "image" => "images/le-male.jpg"
+        "image" => "images/Le-male.jpg"
     ],
     [
         "name" => "Scandal Pour Homme",
         "description" => "A bold, masculine fragrance with caramel and clary sage.",
         "price" => 102.50,
-        "image" => "images/scandal.jpg"
+        "image" => "images/Scandal.jpg"
     ],
     [
         "name" => "Le Beau Eau de Parfum",
         "description" => "Sensual blend of coconut wood and tonka bean.",
         "price" => 96.75,
-        "image" => "images/le-beau.jpg"
+        "image" => "images/Le-beau.jpg"
     ]
 ];
 ?>
@@ -53,7 +52,6 @@ $products = [
 </body>
 </html>
 <style>
-    /* Reset bazik */
 * {
     margin: 0;
     padding: 0;
@@ -66,14 +64,14 @@ body {
     color: #333;
 }
 
-/* Titulli kryesor */
+
 h1 {
     font-weight: bold;
     font-size: 2.5rem;
     color: #2c2c2c;
 }
 
-/* Karta e produktit */
+
 .card {
     border: none;
     border-radius: 20px;
@@ -89,25 +87,25 @@ h1 {
 }
 
 .card-img-top {
-    height: 300px;
+    height: 400px;
     object-fit: cover;
     border-bottom: 1px solid #eee;
 }
 
-/* Titulli i produktit */
+
 .card-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: #1e1e1e;
 }
 
-/* Përshkrimi */
+
 .card-text {
     font-size: 0.95rem;
     color: #555;
 }
 
-/* Butoni "Blej Tani" */
+
 .btn-primary {
     background-color: #cc3366;
     border: none;
@@ -121,7 +119,7 @@ h1 {
     background-color: #b92c5d;
 }
 
-/* Responsive margjina për pajisje të vogla */
+
 @media (max-width: 768px) {
     .card-img-top {
         height: 250px;
