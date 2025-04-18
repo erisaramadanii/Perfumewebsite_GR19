@@ -465,6 +465,7 @@
     <div class="text-box">
       <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolut</div>
       <br="section-paragraph">
+      <br></br>
         A scorching breeze strikes the</br>
          Jean Paul Gaultier ship! </br>
          Turning up the heat, </br>
@@ -483,6 +484,7 @@
     <div class="new-text-box">
       <div class="section-title">The Power of Scandal: A Fragrance for the Bold</div>
       <br="section-paragraph">
+      <br></br>
         Set the scene for the evening with a </br>
         fragrance that exudes power and confidence...
       </p>
