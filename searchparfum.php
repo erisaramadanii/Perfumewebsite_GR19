@@ -59,7 +59,7 @@ switch ($sort) {
     <link rel="stylesheet" href="search.css">
 </head>
 <body>
-<h1><?php echo BRAND_NAME; ?> | Choose your fragrance<?php echo htmlspecialchars($query); ?></h1>
+<h1><?php echo BRAND_NAME; ?> | Choose your fragrance | <?php echo htmlspecialchars($query); ?></h1>
 
 <form method="get">
     <input type="text" name="query" value="<?php echo htmlspecialchars($query); ?>" placeholder="Kërko parfum...">
