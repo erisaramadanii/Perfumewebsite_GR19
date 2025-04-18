@@ -361,7 +361,7 @@
   <div class="logo">PERFUME SHOP</div>
 
   
-  <div class="navbar-item">
+   <div class="navbar-item">
     WOMEN'S
     <div class="dropdown-menu">
       <a href="https://www.jeanpaulgaultier.com/ww/en/c/gaultier-divine--gaultier-divine">Shop All Women's</a>
