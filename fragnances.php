@@ -359,14 +359,18 @@
 <!-- Navbar -->
 <div class="navbar">
   <div class="logo">PERFUME SHOP</div>
+
+  
   <div class="navbar-item">
     WOMEN'S
+    <div class="dropdown-menu">
       <a href="https://www.jeanpaulgaultier.com/ww/en/c/gaultier-divine--gaultier-divine">Shop All Women's</a>
       <a href="https://www.jeanpaulgaultier.com/ww/en/c/fragrances-for-women--all-women">Women's Bestsellers</a>
       <a href="https://www.jeanpaulgaultier.com/ww/en/c/classique--classique">Luxury Perfumes</a>
       <a href="https://www.jeanpaulgaultier.com/ww/en/c/gift-sets--coffrets?srsltid=AfmBOoo2z12vcrGGGIxZffnVW8pciuIZkVlLfukzcU5A4Vszkb1rHnlv">Gift Sets</a>
     </div>
   </div>
+  
   <div class="navbar-item">
     MEN'S
     <div class="dropdown-menu">
@@ -376,6 +380,7 @@
       <a href="https://www.jeanpaulgaultier.com/uk/en/p/discovery-kits/discovery-kit-for-him-2024-gift-set-000000000065213238?srsltid=AfmBOorx06xMEIEsj2urkGfWXKrJKCh1lTvqPM13lmINVysuZCCLP8zL">Gift Sets</a>
     </div>
   </div>
+  
   <div class="navbar-item">
   <a href="offers.php">OFFERS</a> 
     <div class="dropdown-menu">
@@ -384,6 +389,7 @@
       <a href="#">Clearance</a>
     </div>
   </div>
+  
   <div class="navbar-item">
   <a href="gifting.php">GIFTING</a> 
     <div class="dropdown-menu">
