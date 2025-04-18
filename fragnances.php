@@ -361,20 +361,19 @@
   <div class="logo">PERFUME SHOP</div>
   <div class="navbar-item">
     WOMEN'S
-    <div class="dropdown-menu">
-      <a href="#">Shop All Women's</a>
-      <a href="#">Women's Bestsellers</a>
-      <a href="#">Luxury Perfumes</a>
-      <a href="#">Gift Sets</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/gaultier-divine--gaultier-divine">Shop All Women's</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/fragrances-for-women--all-women">Women's Bestsellers</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/classique--classique">Luxury Perfumes</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/gift-sets--coffrets?srsltid=AfmBOoo2z12vcrGGGIxZffnVW8pciuIZkVlLfukzcU5A4Vszkb1rHnlv">Gift Sets</a>
     </div>
   </div>
   <div class="navbar-item">
     MEN'S
     <div class="dropdown-menu">
-      <a href="#">Shop All Men's</a>
-      <a href="#">Men's Bestsellers</a>
-      <a href="#">Luxury Perfumes</a>
-      <a href="#">Gift Sets</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/fragrances-for-men--all-men">Shop All Men's</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/scandal-pour-homme">Men's Bestsellers</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/le-beau--le-beau">Luxury Perfumes</a>
+      <a href="https://www.jeanpaulgaultier.com/uk/en/p/discovery-kits/discovery-kit-for-him-2024-gift-set-000000000065213238?srsltid=AfmBOorx06xMEIEsj2urkGfWXKrJKCh1lTvqPM13lmINVysuZCCLP8zL">Gift Sets</a>
     </div>
   </div>
   <div class="navbar-item">
