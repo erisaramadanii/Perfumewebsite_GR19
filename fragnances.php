@@ -197,6 +197,7 @@
       justify-content: space-between;
       padding: 50px 20px;
       gap: 40px;
+      text-align: left;
     }
 
     .text-box {
@@ -228,12 +229,14 @@
       font-weight: bold;
       color: #333;
       margin-bottom: 20px;
+      text-align: left;
     }
 
     .section-paragraph {
       font-size: 18px;
       line-height: 1.6;
       color: #555;
+      text-align: left;
     }
 
     /* Fotoja dhe paragrafi i ri poshtë */
@@ -242,6 +245,7 @@
       justify-content: space-between;
       padding: 50px 20px;
       gap: 40px;
+      text-align: left;
     }
 
     .new-text-box {
@@ -314,24 +318,9 @@
     visibility: visible;
 }
 
-.shop-now-button {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    background-color: #ff4081;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    visibility: hidden;
-    transition: visibility 0.3s ease-in-out;
-}
-
 .six-photo-box:hover .shop-now-button {
     visibility: visible;
 }
-
 
     /* Hapësira shtesë pas fotos 11 dhe poshtë fotos 12 dhe 13 */
     .spacer {
@@ -341,16 +330,14 @@
 
     #product-modal {
   display: none;
-  position: absolute;  /* Po e vendosim në pozicion absolut për t'i përshtatur me butonin */
+  position: absolute;  
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 20px;
   border-radius: 8px;
   z-index: 1000;
-  width: 400px; /* Mund ta ndryshosh si të duash */
+  width: 400px; 
 }
-
-
 
   </style>
 </head>
@@ -476,7 +463,7 @@
   <!-- Seksioni i ri me tekst dhe foto -->
   <div class="content-section">
     <div class="text-box">
-      <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolu</div>
+      <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolut</div>
       <br="section-paragraph">
         A scorching breeze strikes the</br>
          Jean Paul Gaultier ship! </br>
