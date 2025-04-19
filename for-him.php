@@ -1,36 +1,90 @@
+<?php
+include "productforhim.php";
+
+$hisGifts = [
+    new GiftProduct(
+        "Bold Essence",
+        "Strong woody notes blended with leather and spice.",
+        44.99,
+        "images/man2.png"
+    ),
+    new GiftProduct(
+        "Night Power",
+        "A masculine and magnetic scent for evening occasions.",
+        39.99,
+        "images/man5.png"
+    ),
+    new GiftProduct(
+        "Fresh Man",
+        "Citrus and marine elements for a clean, energizing feel.",
+        34.99,
+        "images/man7.png"
+    ),
+];
+
+// Optional sort
+$sortMethod = $_GET['sort'] ?? 'asc';
+
+if ($sortMethod == 'asc') {
+    usort($hisGifts, fn($a, $b) => $a->getPrice() <=> $b->getPrice());
+} elseif ($sortMethod == 'desc') {
+    usort($hisGifts, fn($a, $b) => $b->getPrice() <=> $a->getPrice());
+}
+
+$GLOBALS['pageTitle'] = "For Him | Gifting";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Him | Gifting</title>
+  <title><?= $pageTitle ?></title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Georgia', serif;
+      font-family: Georgia, serif;
       background-color: #f0f0f0;
+      margin: 0;
+      padding: 40px 20px;
       color: #333;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
     h1 {
       text-align: center;
-      font-size: 36px;
       color: #212121;
-      margin-bottom: 40px;
+      font-size: 36px;
+      margin-bottom: 20px;
     }
-
-    .gift-grid {
+    .sort-links {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sort-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #212121;
+      font-weight: bold;
+    }
+    .back-link {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .back-link a {
+      background-color: #212121;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .back-link a:hover {
+      background-color: #000;
+    }
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
     }
-
-    .gift-item {
+    .item {
       background-color: white;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -38,27 +92,22 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-
-    .gift-item:hover {
+    .item:hover {
       transform: scale(1.03);
     }
-
-    .gift-item img {
+    .item img {
       width: 100%;
-      height: 250px;
+      height: 450px;
       object-fit: cover;
     }
-
-    .gift-info {
+    .info {
       padding: 20px;
     }
-
-    .gift-info h3 {
+    .info h3 {
       margin-top: 0;
       color: #111;
     }
-
-    .gift-info p {
+    .info p {
       font-size: 15px;
       color: #555;
     }
@@ -66,47 +115,29 @@
 </head>
 <body>
 
-<div class="container">
-  <h1>Fragrances For Him</h1>
-  
-  <div class="gift-grid">
-    <div class="gift-item">
-      <img src="https://via.placeholder.com/300x250?text=Bold+Essence" alt="Bold Essence">
-      <div class="gift-info">
-        <h3>Bold Essence</h3>
-        <p>Strong woody notes blended with a hint of leather and spice. For confident men.</p>
-      </div>
-    </div>
+<h1><?= $pageTitle ?></h1>
 
-    <div class="gift-item">
-      <img src="https://via.placeholder.com/300x250?text=Night+Power" alt="Night Power">
-      <div class="gift-info">
-        <h3>Night Power</h3>
-        <p>A masculine and magnetic scent, ideal for evening occasions and parties.</p>
-      </div><div class="gift-item">
-  <img src="https://via.placeholder.com/300x250?text=New+Arrival" alt="New Arrival">
-  <div class="gift-info">
-    <h3>New Arrival</h3>
-    <p>Experience the latest fragrance trend, blending fresh notes with a touch of sophistication.</p>
-  </div>
-</div><!-- Add a new gift item -->
-<div class="gift-item">
-  <img src="https://via.placeholder.com/300x250?text=Urban+Vibes" alt="Urban Vibes">
-  <div class="gift-info">
-    <h3>Urban Vibes</h3>
-    <p>A modern and edgy scent, perfect for the urban dweller.</p>
-  </div>
+<div class="sort-links">
+  <strong>Sort by Price:</strong>
+  <a href="?sort=asc">Low to High</a> |
+  <a href="?sort=desc">High to Low</a>
 </div>
-    </div>
 
-    <div class="gift-item">
-      <img src="https://via.placeholder.com/300x250?text=Fresh+Man" alt="Fresh Man">
-      <div class="gift-info">
-        <h3>Fresh Man</h3>
-        <p>Clean and energizing with citrus and marine elements. Great for everyday use.</p>
+
+<div class="grid">
+  <?php foreach ($hisGifts as $gift): ?>
+    <div class="item">
+      <img src="<?= $gift->getImage() ?>" alt="<?= $gift->getName() ?>">
+      <div class="info">
+        <h3><?= $gift->getName() ?> - €<?= number_format($gift->getPrice(), 2) ?></h3>
+        <p><?= $gift->getDescription() ?></p>
       </div>
     </div>
-  </div>
+  <?php endforeach; ?>
+</div>
+
+<div class="back-link">
+  <a href="gifting.php">← Back to Gifting</a>
 </div>
 
 </body>

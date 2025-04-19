@@ -125,12 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!-- Forma për shtimin e dhuratave -->
-<h2>Shto një dhuratë të re</h2>
+<h2>Add a new gift</h2>
 <form method="POST">
-    <label>Emri i dhuratës:</label><br>
+    <label>Name of the gift:</label><br>
     <input type="text" name="emri" required><br><br>
 
-    <label>Çmimi (€):</label><br>
+    <label>Price (€):</label><br>
     <input type="text" name="cmimi" required><br><br>
 
     <input type="submit" value="Shto">

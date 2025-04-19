@@ -106,23 +106,23 @@ include "productgifts.php";
 $giftSets = [
     new GiftSet(
         "Luxury Set",
-        "Elegant perfume and lotion set in a luxurious box.",
+        "Elegant perfume and lotion set in a luxurious gift box.",
         49.99,
-        "https://images.unsplash.com/photo-1600180758890-6a6b30f2dfb3?fit=crop&w=500&q=80", // Elegant perfume box
+        "images/man1.png",
         3
     ),
     new GiftSet(
         "Travel Set",
-        "Mini perfumes and essentials for travel lovers.",
+        "Compact fragrance set ideal for travel or handbag use.",
         29.99,
-        "https://images.unsplash.com/photo-1611078489935-bd3abfe45b88?fit=crop&w=500&q=80", // Travel size products
+        "Images/M2_La_Male_Le_Parfum.jpg",
         4
     ),
     new GiftSet(
         "Romantic Set",
-        "A romantic combination of scents perfect for couples.",
+        "Sweet and soft fragrances perfect for romantic moments.",
         39.99,
-        "https://images.unsplash.com/photo-1600181952428-6bd5efad7845?fit=crop&w=500&q=80", // Romantic themed set
+        "Images/F3_La_Belle.webp",
         2
     ),
 ];
@@ -154,12 +154,19 @@ $GLOBALS['pageTitle'] = "Gift Sets";
     body { font-family: Georgia, serif; background: #fff5f0; margin: 0; padding: 40px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
     .item { background: white; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .item img { width: 100%; height: 250px; object-fit: cover; }
-    .info { padding: 20px; }
+    .item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}    .info { padding: 20px; }
     .info h3 { margin: 0; }
     .info p { color: #555; }
     .sort-links { text-align: center; margin-bottom: 20px; }
     .sort-links a { margin: 0 10px; text-decoration: none; color: #c40000; }
+   
+
   </style>
 </head>
 <body>
@@ -183,6 +190,13 @@ $GLOBALS['pageTitle'] = "Gift Sets";
       </div>
     </div>
   <?php endforeach; ?>
+</div>
+<h1 style="text-align:center; color:#c40000;"><?= $pageTitle ?></h1>
+
+<div style="text-align: center; margin-bottom: 30px;">
+  <a href="gifting.php" style="background-color: #c40000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+    ← Back to Gifting
+  </a>
 </div>
 
 </body>
