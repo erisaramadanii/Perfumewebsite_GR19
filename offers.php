@@ -12,3 +12,5 @@ class Parfum{
   $this->gjinia = $gjinia;
 }
 }
+$parfumet = [
+  new Parfum(emri: "Classique", foto: 
