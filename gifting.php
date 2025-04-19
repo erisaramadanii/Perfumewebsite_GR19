@@ -42,6 +42,7 @@
             font-weight: bold;
             transition: 0.3s;
             box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
         .gift-option:hover {

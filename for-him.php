@@ -83,7 +83,20 @@
       <div class="gift-info">
         <h3>Night Power</h3>
         <p>A masculine and magnetic scent, ideal for evening occasions and parties.</p>
-      </div>
+      </div><div class="gift-item">
+  <img src="https://via.placeholder.com/300x250?text=New+Arrival" alt="New Arrival">
+  <div class="gift-info">
+    <h3>New Arrival</h3>
+    <p>Experience the latest fragrance trend, blending fresh notes with a touch of sophistication.</p>
+  </div>
+</div><!-- Add a new gift item -->
+<div class="gift-item">
+  <img src="https://via.placeholder.com/300x250?text=Urban+Vibes" alt="Urban Vibes">
+  <div class="gift-info">
+    <h3>Urban Vibes</h3>
+    <p>A modern and edgy scent, perfect for the urban dweller.</p>
+  </div>
+</div>
     </div>
 
     <div class="gift-item">

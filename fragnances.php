@@ -388,10 +388,10 @@
   <div class="navbar-item">
   <a href="gifting.php">GIFTING</a> 
     <div class="dropdown-menu">
-      <a href="#">Gift Sets</a>
-      <a href="#">For Her</a>
-      <a href="#">For Him</a>
-      <a href="#">Birthday Gifts</a>
+      <a href="gift-sets.php">Gift Sets</a>
+      <a href="for-her.php">For Her</a>
+      <a href="for-him.php">For Him</a>
+      <a href="birthday-gifts.php">Birthday Gifts</a>
     </div>
   </div>
 </div>
