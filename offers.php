@@ -105,6 +105,7 @@ if ($sort === "asc") {
             margin: auto;
             padding: 20px;
             box-sizing: border-box;
+            border: 4px solid pink;
         }
 
         .sidebar {
