@@ -93,7 +93,7 @@ if ($sort === "asc") {
   display: block;
   width: 100px;
   height: 4px;
-  background-color: #b08d57; /* Gold vibe për luks */
+  background-color:rgb(176, 87, 127);
   margin: 10px auto 0;
   border-radius: 5px;
   opacity: 0.8;
