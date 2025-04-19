@@ -69,7 +69,7 @@ if ($sort === "asc") {
         h1 {
             font-family: 'Playfair Display', serif; /* Font elegant dhe modern */
   font-size: 42px;
-  color: #2c2c2c; /* Ngjyrë neutrale, classy */
+  color: rgb(176, 87, 127);
   text-align: center;
   margin-top: 50px;
   margin-bottom: 30px;
@@ -129,7 +129,7 @@ if ($sort === "asc") {
 
         .perfume {
             background-color: #fff;
-            border: 1px solid #ddd;
+            border: 4px solid pink;
             padding: 15px;
             text-align: center;
             border-radius: 10px;
