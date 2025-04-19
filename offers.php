@@ -51,13 +51,37 @@ if ($sort === "asc") {
         }
 
         h1 {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            font-size: 32px;
-            color: #333;
+            font-family: 'Playfair Display', serif; /* Font elegant dhe modern */
+  font-size: 42px;
+  color: #2c2c2c; /* Ngjyrë neutrale, classy */
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  animation: fadeInTitle 1.2s ease-in-out;
         }
-
+ @keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+       h1::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: #b08d57; /* Gold vibe për luks */
+  margin: 10px auto 0;
+  border-radius: 5px;
+  opacity: 0.8;
+}
         .container {
             display: flex;
             width: 100%;
