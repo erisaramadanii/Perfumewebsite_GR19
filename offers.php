@@ -300,3 +300,107 @@ if ($sort === "asc") {
 
         <button type="submit" class="btn">Apliko</button>
     </form>
+<!-- Produktet -->
+    <div class="products">
+        <?php foreach ($parfumet as $p): ?>
+            <div class="perfume">
+                <img src="images/<?= $p->foto ?>" alt="<?= $p->emri ?>">
+                <h4><?= $p->emri ?></h4>
+                <div class="price">
+                    <span class="old-price"><?= $p->cmimi ?>€</span> <!-- Çmimi i vjetër -->
+                    <span class="new-price"><?= round($p->cmimi * 0.9, 2) ?>€</span> <!-- Çmimi i ri me 10% ulje -->
+                </div>
+                <div class="buttons">
+                    <button class="btn discover">Discover</button>
+                    <button class="btn shop-now" onclick="showModal('<?= $p->foto ?>', <?= $p->cmimi ?>)">Shop Now</button>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img" class="modal-img" src="" alt="">
+        <div class="quantity-group">
+            <select id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+
+            <select id="ml">
+                <option value="50">50 ml</option>
+                <option value="100">100 ml</option>
+            </select>
+        </div>
+        <div class="total-price" id="total-price"></div>
+        <button class="order-btn" onclick="window.location.href='ordernow.php'">Place Order</button>
+    </div>
+</div>
+<form id="orderForm" action="ordernow.php" method="POST" style="display: none;">
+    <input type="hidden" name="foto" id="orderFoto">
+    <input type="hidden" name="cmimi" id="orderCmimi">
+    <input type="hidden" name="quantity" id="orderQuantity">
+    <input type="hidden" name="ml" id="orderML">
+    <input type="hidden" name="total" id="orderTotal">
+</form>
+
+
+<script>
+    let currentPrice = 0;
+
+    function showModal(image, price) {
+        currentPrice = price * 0.9; // Çmimi me 10% ulje
+        document.getElementById("myModal").style.display = "block";
+        document.getElementById("modal-img").src = "images/" + image;
+        document.getElementById("quantity").value = 1;
+        document.getElementById("ml").value = 50;
+        updateTotal();
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    function updateTotal() {
+        const quantity = document.getElementById("quantity").value;
+        const ml = document.getElementById("ml").value;
+        const total = (currentPrice * quantity * ml) / 50;
+        document.getElementById("total-price").textContent = "Total: " + total.toFixed(2) + "€";
+    }
+
+    function placeOrder() {
+    // Merr të dhënat nga modal
+    const quantity = document.getElementById("quantity").value;
+    const ml = document.getElementById("ml").value;
+    const total = (currentPrice * quantity * ml) / 50;
+
+    // Plotëso formularin me të dhënat
+    document.getElementById("orderFoto").value = document.getElementById("modal-img").src;
+    document.getElementById("orderCmimi").value = currentPrice;
+    document.getElementById("orderQuantity").value = quantity;
+    document.getElementById("orderML").value = ml;
+    document.getElementById("orderTotal").value = total.toFixed(2);
+
+    // Dërgo formularin
+    document.getElementById("orderForm").submit();
+}
+
+
+    document.getElementById("quantity").addEventListener("change", updateTotal);
+    document.getElementById("ml").addEventListener("change", updateTotal);
+</script>
+
+
+</body>
+</html>
