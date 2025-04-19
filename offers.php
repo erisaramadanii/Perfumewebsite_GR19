@@ -276,3 +276,27 @@ if ($sort === "asc") {
     </style>
 </head>
 <body>
+<h1>Ofertat e kësaj jave</h1>
+
+<div class="container">
+    <!-- Sidebar Filter -->
+    <form method="get" class="sidebar">
+        <h3>Filtro</h3>
+
+        <div class="filter-group">
+            <strong>GJINIA</strong><br>
+            <label><input type="checkbox" name="gjinia[]" value="female" <?= in_array('female', $gjiniaArray) ? "checked" : "" ?>> Femra</label><br>
+            <label><input type="checkbox" name="gjinia[]" value="male" <?= in_array('male', $gjiniaArray) ? "checked" : "" ?>> Meshkuj</label>
+        </div>
+
+        <div class="filter-group">
+            <strong>Radhit sipas cmimit</strong><br>
+            <select name="sort" class="sort-select">
+                <option value="">Zgjedh</option>
+                <option value="asc" <?= $sort == "asc" ? "selected" : "" ?>>Çmimi më i lirë</option>
+                <option value="desc" <?= $sort == "desc" ? "selected" : "" ?>>Çmimi më i lartë</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Apliko</button>
+    </form>
