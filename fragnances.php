@@ -197,6 +197,7 @@
       justify-content: space-between;
       padding: 50px 20px;
       gap: 40px;
+      text-align: left;
     }
 
     .text-box {
@@ -228,12 +229,14 @@
       font-weight: bold;
       color: #333;
       margin-bottom: 20px;
+      text-align: left;
     }
 
     .section-paragraph {
       font-size: 18px;
       line-height: 1.6;
       color: #555;
+      text-align: left;
     }
 
     /* Fotoja dhe paragrafi i ri poshtë */
@@ -242,6 +245,7 @@
       justify-content: space-between;
       padding: 50px 20px;
       gap: 40px;
+      text-align: left;
     }
 
     .new-text-box {
@@ -314,24 +318,9 @@
     visibility: visible;
 }
 
-.shop-now-button {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    background-color: #ff4081;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    visibility: hidden;
-    transition: visibility 0.3s ease-in-out;
-}
-
 .six-photo-box:hover .shop-now-button {
     visibility: visible;
 }
-
 
     /* Hapësira shtesë pas fotos 11 dhe poshtë fotos 12 dhe 13 */
     .spacer {
@@ -341,16 +330,14 @@
 
     #product-modal {
   display: none;
-  position: absolute;  /* Po e vendosim në pozicion absolut për t'i përshtatur me butonin */
+  position: absolute;  
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 20px;
   border-radius: 8px;
   z-index: 1000;
-  width: 400px; /* Mund ta ndryshosh si të duash */
+  width: 400px; 
 }
-
-
 
   </style>
 </head>
@@ -359,24 +346,28 @@
 <!-- Navbar -->
 <div class="navbar">
   <div class="logo">PERFUME SHOP</div>
-  <div class="navbar-item">
+
+  
+   <div class="navbar-item">
     WOMEN'S
     <div class="dropdown-menu">
-      <a href="#">Shop All Women's</a>
-      <a href="#">Women's Bestsellers</a>
-      <a href="#">Luxury Perfumes</a>
-      <a href="#">Gift Sets</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/gaultier-divine--gaultier-divine">Shop All Women's</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/fragrances-for-women--all-women">Women's Bestsellers</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/classique--classique">Luxury Perfumes</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/gift-sets--coffrets?srsltid=AfmBOoo2z12vcrGGGIxZffnVW8pciuIZkVlLfukzcU5A4Vszkb1rHnlv">Gift Sets</a>
     </div>
   </div>
+  
   <div class="navbar-item">
     MEN'S
     <div class="dropdown-menu">
-      <a href="#">Shop All Men's</a>
-      <a href="#">Men's Bestsellers</a>
-      <a href="#">Luxury Perfumes</a>
-      <a href="#">Gift Sets</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/fragrances-for-men--all-men">Shop All Men's</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/scandal-pour-homme">Men's Bestsellers</a>
+      <a href="https://www.jeanpaulgaultier.com/ww/en/c/le-beau--le-beau">Luxury Perfumes</a>
+      <a href="https://www.jeanpaulgaultier.com/uk/en/p/discovery-kits/discovery-kit-for-him-2024-gift-set-000000000065213238?srsltid=AfmBOorx06xMEIEsj2urkGfWXKrJKCh1lTvqPM13lmINVysuZCCLP8zL">Gift Sets</a>
     </div>
   </div>
+  
   <div class="navbar-item">
   <a href="offers.php">OFFERS</a> 
     <div class="dropdown-menu">
@@ -385,10 +376,11 @@
       <a href="#">Clearance</a>
     </div>
   </div>
+  
   <div class="navbar-item">
   <a href="gifting.php">GIFTING</a> 
     <div class="dropdown-menu">
-      <a href="gift-sets.php">Gift Sets</a>
+        <a href="gift-sets.php">Gift Sets</a>
       <a href="for-her.php">For Her</a>
       <a href="for-him.php">For Him</a>
       <a href="birthday-gifts.php">Birthday Gifts</a>
@@ -408,39 +400,48 @@
 <div class="fragrances-section">
   <h2>FRAGRANCES</h2>
 
+
+  <a href="searchparfum.php" style="text-decoration: none; color: white;">
+  <div style="background-color: red; padding: 10px; text-align: center;">
+    <h2 style="margin: 0;">SHOP NOW</h2>
+  </div>
+</a>
+
+
+
 <div class="six-photo-row">
     <div class="six-photo-box">
       <img src="images/photo5.png">
       <div class="photo-name">SCANDAL INTENSE</div>
-      <a href="ordernow.php" class="shop-now-button" data-img="images/photo5.png" data-price="100" data-name="SCANDAL INTENSE">SHOP NOW</a>
+     
     </div>
     <div class="six-photo-box">
       <img src="images/photo6.jpg">
       <div class="photo-name">SCANDAL ABSOLUT</div>
-      <button class="shop-now-button" data-img="images/photo6.jpg" data-price="135" data-name="SCANDAL ABSOLUT">SHOP NOW</button>
+     
     </div>
     <div class="six-photo-box">
       <img src="images/photo7.jpg">
       <div class="photo-name">SCANDAL LE PARFUM</div>
-      <a href="#" class="shop-now-button" data-img="images/photo7.jpg" data-price="130" data-name="SCANDAL LE PARFUM">SHOP NOW</a>
+    
     </div>
   </div>
 
   <div class="six-photo-row">
     <div class="six-photo-box">
-      <img src="images/photo8.jpg" alt="Foto 8">
+      <img src="images/photo8.jpg">
       <div class="photo-name">SCANDAL</div>
-      <a href="#" class="shop-now-button" data-img="images/photo8.jpg" data-price="140" data-name="SCANDAL">SHOP NOW</a>
+      
     </div>
     <div class="six-photo-box">
-      <img src="images/photo9.jpg" alt="Foto 9">
+      <img src="images/photo9.jpg">
       <div class="photo-name">SO SCANDAL!</div>
-      <button class="shop-now-button" data-img="images/photo9.jpg" data-price="20.00" data-name="SO SCANDAL">SHOP NOW</button>
+      
     </div>
     <div class="six-photo-box">
-      <img src="images/photo10.jpg" alt="Foto 10">
+      <img src="images/photo10.jpg">
       <div class="photo-name">SCANDAL</div>
-      <a href="#" class="shop-now-button" data-img="images/photo10.jpg" data-price="160" data-name="SCANDAL">SHOP NOW</a>
+   
     </div>
   </div>
 
@@ -462,9 +463,14 @@
   <!-- Seksioni i ri me tekst dhe foto -->
   <div class="content-section">
     <div class="text-box">
-      <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolu</div>
-      <p class="section-paragraph">
-        A scorching breeze strikes the Jean Paul Gaultier ship! Turning up the heat, Le Male Elixir Absolu sets every deck ablaze with its intense aura...
+      <div class="section-title">A Bottle Named Desire: Le Male Elixir Absolut</div>
+      <br="section-paragraph">
+      <br></br>
+        A scorching breeze strikes the</br>
+         Jean Paul Gaultier ship! </br>
+         Turning up the heat, </br>
+         Le Male Elixir Absolut </br>
+         sets every deck ablaze with its intense aura...
       </p>
     </div>
 
@@ -477,8 +483,10 @@
 <div class="new-content-section">
     <div class="new-text-box">
       <div class="section-title">The Power of Scandal: A Fragrance for the Bold</div>
-      <p class="section-paragraph">
-        Set the scene for the evening with a fragrance that exudes power and confidence...
+      <br="section-paragraph">
+      <br></br>
+        Set the scene for the evening with a </br>
+        fragrance that exudes power and confidence...
       </p>
     </div>
 
@@ -487,132 +495,60 @@
   </div>
 </div>
 
+
+<!-- Seksioni FRAGRANCES -->
+<div class="fragrances-section">
+  <h2>FRAGRANCES</h2>
+
+
+  <a href="searchparfum.php" style="text-decoration: none; color: white;">
+  <div style="background-color: red; padding: 10px; text-align: center;">
+    <h2 style="margin: 0;">SHOP NOW</h2>
+  </div>
+</a>
+
+
+
   <!-- Seksioni me 3 foto të tjera -->
   <div class="six-photo-row">
     <div class="six-photo-box">
-      <img src="images/photo17.jpg" alt="Foto 17">
+      <img src="images/photo17.jpg">
       <div class="photo-name">SCANDAL NEW</div>
-      <a href="#" class="shop-now-button" data-img="images/photo17.jpg" data-price="170" data-name="SCANDAL NEW">SHOP NOW</a>
+     
     </div>
     <div class="six-photo-box">
-      <img src="images/photo18.jpg" alt="Foto 18">
+      <img src="images/photo18.jpg">
       <div class="photo-name">SCANDAL LUXE</div> 
-      <a href="#" class="shop-now-button" data-img="images/photo18.jpg" data-price="160" data-name="SCANDAL LUXE">SHOP NOW</a>
+    
     </div>
     <div class="six-photo-box">
-      <img src="images/photo19.jpg" alt="Foto 19">
+      <img src="images/photo19.jpg">
       <div class="photo-name">SO SCANDAL LUXE</div>
-      <a href="#" class="shop-now-button" data-img="images/photo19.jpg" data-price="190" data-name="SO SCANDAL LUXE">SHOP NOW</a>
+      
     </div>
   </div>
 
  <!-- Seksioni me 3 foto të tjera -->
  <div class="six-photo-row">
     <div class="six-photo-box">
-      <img src="images/photo14.jpg" alt="Foto 14">
+      <img src="images/photo14.jpg">
       <div class="photo-name">SCANDAL X</div>
-      <a href="#" class="shop-now-button" data-img="images/photo14.jpg" data-price="230" data-name="SCANDAL X">SHOP NOW</a>
+     
     </div>
     <div class="six-photo-box">
-      <img src="images/photo15.jpg" alt="Foto 15">
+      <img src="images/photo15.jpg">
       <div class="photo-name">SO SCANDAL INTENSE</div>
-      <a href="#" class="shop-now-button" data-img="images/photo15.jpg" data-price="160" data-name="SO SCANDAL INTENSE">SHOP NOW</a>
+     
     </div>
     <div class="six-photo-box">
-      <img src="images/photo16.jpg" alt="Foto 16">
+      <img src="images/photo16.jpg">
       <div class="photo-name">SCANDAL LE PARFUM</div>
-      <a href="#" class="shop-now-button" data-img="images/photo16.jpg" data-price="160" data-name="SCANDAL LE PARFUM">SHOP NOW</a>
+    
     </div>
   </div>
 </div>
 
 
-
-<!-- Modal për zgjedhjen e parfumeve -->
-<div id="product-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <form id="order-form" action="ordernow.php" method="POST">
-      <img id="modal-img" src="" style="width: 100px;"><br>
-      <h2 id="modal-title"></h2>
-      <p>Çmimi: €<span id="modal-price"></span></p>
-
-      <label for="quantity">Sasia:</label>
-      <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
-
-      <label for="ml">ML:</label>
-      <select name="ml" id="ml">
-        <option value="30ml">30ml</option>
-        <option value="50ml">50ml</option>
-        <option value="100ml">100ml</option>
-      </select><br><br>
-
-      <input type="hidden" name="product_name" id="product_name">
-      <input type="hidden" name="product_img" id="product_img">
-      <input type="hidden" name="product_price" id="product_price">
-
-      <p>Total: €<span id="modal-total"></span></p>
-
-      <!-- Butoni për dërgimin e formularit -->
-      <button type="submit">Porosit</button>
-    </form>  
-  </div>
-</div>
-
-
-
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function() {
-  const buttons = document.querySelectorAll('.shop-now-button');
-
-  buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      // Merr pozicionin e butonit
-      const buttonRect = this.getBoundingClientRect();
-      const img = this.getAttribute('data-img');
-      const price = parseFloat(this.getAttribute('data-price'));
-      const name = this.getAttribute('data-name');
-
-      // Vendos vlerat e modal-it
-      document.getElementById('modal-img').src = img;
-      document.getElementById('modal-title').innerText = name;
-      document.getElementById('modal-price').innerText = price.toFixed(2);
-      document.getElementById('modal-total').innerText = price.toFixed(2);
-      document.getElementById('product_name').value = name;
-      document.getElementById('product_img').value = img;
-      document.getElementById('product_price').value = price;
-
-      // Vendos pozicionin e modal-it aty ku është butoni
-      const modal = document.getElementById('product-modal');
-      modal.style.left = `${buttonRect.left}px`;  // Vendos pozicionin horizontal
-      modal.style.top = `${buttonRect.bottom + window.scrollY}px`;  // Vendos pozicionin vertikal
-
-      // Trego modal-in
-      modal.style.display = 'block';
-
-      // Funksion për përditësimin e çmimit total
-      document.getElementById('quantity').addEventListener('input', updateTotal);
-      document.getElementById('ml').addEventListener('change', updateTotal);
-
-      function updateTotal() {
-        const qty = parseInt(document.getElementById('quantity').value);
-        const total = qty * price;
-        document.getElementById('modal-total').innerText = total.toFixed(2);
-      }
-    });
-  });
-
-  window.closeModal = function() {
-    document.getElementById('product-modal').style.display = 'none';
-  }
-});
-
-
-</script>
 
 </body>
 </html>
