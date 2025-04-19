@@ -47,7 +47,7 @@ if ($sort === "asc") {
             font-family: sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9e6e0;
         }
 
         h1 {
