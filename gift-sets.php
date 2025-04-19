@@ -100,7 +100,7 @@
 </html> -->
 
 <?php
-include "Product.php";
+include "productgifts.php";
 
 // Array multidimensional me objekte GiftSet
 $giftSets = [
