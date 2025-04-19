@@ -335,7 +335,7 @@ if ($sort === "asc") {
                     <span class="new-price"><?= round($p->cmimi * 0.9, 2) ?>€</span> <!-- Çmimi i ri me 10% ulje -->
                 </div>
                 <div class="buttons">
-                    <button class="btn discover">Discover</button>
+                    
                     <button class="btn shop-now" onclick="showModal('<?= $p->foto ?>', <?= $p->cmimi ?>)">Shop Now</button>
                 </div>
             </div>
