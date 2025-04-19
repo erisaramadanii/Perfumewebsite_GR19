@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gifting | CarMarketplace</title>
+    <title>Gifting </title>
     <style>
         body {
             margin: 0;
@@ -64,7 +64,90 @@
         <a href="birthday-gifts.php" class="gift-option">🎂 Birthday Gifts</a>
     </div>
 </div>
+<?php
+// Klasa për një dhuratë (gift item)
+class GiftItem {
+    private $name;
+    private $price;
+
+    public function __construct($name, $price) {
+        $this->setName($name);
+        $this->setPrice($price);
+    }
+
+    // Set dhe Get për emrin
+    public function setName($name) {
+        if (preg_match("/^[A-Za-z\s]{2,50}$/", $name)) {
+            $this->name = $name;
+        } else {
+            throw new Exception("Emri nuk është valid!");
+        }
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    // Set dhe Get për çmimin
+    public function setPrice($price) {
+        if (preg_match("/^\d+(\.\d{1,2})?$/", $price)) {
+            $this->price = $price;
+        } else {
+            throw new Exception("Çmimi nuk është valid!");
+        }
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function display() {
+        return "Emri: " . $this->name . " - Çmimi: €" . $this->price;
+    }
+}
+
+// Shembull: lista e dhuratave
+$gifts = [];
+
+// Nëse forma është dërguar
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $emri = $_POST['emri'] ?? '';
+    $cmimi = $_POST['cmimi'] ?? '';
+
+    try {
+        $gift = new GiftItem($emri, $cmimi);
+        $gifts[] = $gift;
+        echo "<p style='color:green;'>Shtimi u krye me sukses!</p>";
+    } catch (Exception $e) {
+        echo "<p style='color:red;'>Gabim: " . $e->getMessage() . "</p>";
+    }
+}
+?>
+
+<!-- Forma për shtimin e dhuratave -->
+<h2>Shto një dhuratë të re</h2>
+<form method="POST">
+    <label>Emri i dhuratës:</label><br>
+    <input type="text" name="emri" required><br><br>
+
+    <label>Çmimi (€):</label><br>
+    <input type="text" name="cmimi" required><br><br>
+
+    <input type="submit" value="Shto">
+</form>
+
+<!-- Afisho dhuratat e futura -->
+<?php
+if (!empty($gifts)) {
+    echo "<h3>Lista e dhuratave:</h3><ul>";
+    foreach ($gifts as $gift) {
+        echo "<li>" . $gift->display() . "</li>";
+    }
+    echo "</ul>";
+}
+?>
 
 </body>
 </html>
+ 
 

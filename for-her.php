@@ -68,7 +68,7 @@
 
 <div class="container">
   <h1>Fragrances For Her</h1>
-  
+  <p><a href="gifting.php" style="color:#c2185b; font-weight:bold; text-decoration:none;">&larr; Back to Gifting</a></p>
   <div class="gift-grid">
     <div class="gift-item">
       <img src="https://via.placeholder.com/300x250?text=Floral+Sensation" alt="Floral Sensation">
