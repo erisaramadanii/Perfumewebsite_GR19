@@ -5,7 +5,7 @@ class Parfum{
   public $cmimi;
   public $gjinia;
 
- public function__construct($emri, $cmimi, $gjinia) {
+ public function __construct($emri, $cmimi, $gjinia) {
   $this->emri = $emri;
   $this->foto = $foto;
   $this->cmimi = $cmimi;
