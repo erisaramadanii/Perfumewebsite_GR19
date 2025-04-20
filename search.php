@@ -87,7 +87,6 @@ if ($sort === 'price_asc') {
         <?php if (empty($results)) echo "<p style='text-align:center;'>Asnjë produkt nuk u gjet.</p>"; ?>
     </div>
     
-    <!-- MODAL -->
     <div id="productModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
