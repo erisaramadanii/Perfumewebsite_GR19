@@ -53,6 +53,11 @@ if ($sort === "asc") {
 }
 ?>
 
+<?php
+$bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
+?>
+
+
 <!DOCTYPE html>
 <html lang="sq">
 <head>
@@ -316,6 +321,9 @@ if ($sort === "asc") {
 
     </style>
 </head>
+
+<body style="background-color: <?= $bg ?>;">
+    
 <body>
 <h1>Ofertat e kësaj jave</h1>
 
