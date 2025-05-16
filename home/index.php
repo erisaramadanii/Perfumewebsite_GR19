@@ -11,6 +11,17 @@ if (isset($_GET['query'])) {
     }
 }
 ?>
+    
+<?php
+if (isset($_GET['color'])) {
+    setcookie("background", $_GET['color'], time() + (86400 * 30), "/");
+    header("Location: " . strtok($_SERVER['REQUEST_URI'], '?')); // redirect pa parametra
+    exit;
+}
+$bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +45,10 @@ if (isset($_GET['query'])) {
         <a id = "logo" href="#">Jean Paul Gaultier</a>
         <div class="nav-bar-links">
             <ul>
+             <li>
+             <a href="?color=grey" title="Dark mode">🌙</a>
+             <a href="?color=white" title="Light mode">☀️</a>
+              </li>
             <li><a href="home.php">Home</a></li>
             <li><a href="Products.php">Products</a></li>
             <li><a href="BestSellers.php">Best Sellers</a></li>
