@@ -1,3 +1,7 @@
+<?php
+$bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -341,6 +345,9 @@
 
   </style>
 </head>
+
+<body style="background-color: <?= $bg ?>;">
+  
 <body>
 
 <!-- Navbar -->
