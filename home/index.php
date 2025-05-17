@@ -78,7 +78,7 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
     </div>
   
 
-    <button class="button-style" onclick="window.location.href='ordernow.php';">Order Now</button>
+<button class="button-style" onclick="window.location.href='contact.php';">Contact Us</button>
 
 
         </nav>
