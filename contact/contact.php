@@ -1,6 +1,5 @@
 <!-- kontakt.php -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,56 +13,62 @@
         <h1>Contact Us</h1>
 
         <?php
-        // === 1. Importimi i funksioneve ose konfigurimeve tjera ===
-
-        // === 2. Error handler personalu ===
-        function error_handler($errno, $errstr, $errfile, $errline) {
-            echo "<p style='color:red;'>Gabim ($errno): $errstr në rreshtin $errline të fajllit $errfile</p>";
-        }
-        set_error_handler("error_handler");
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'C:/xampp/htdocs/Perfumewebsite_GR19-main/PHPMailer-master/src/Exception.php';
-require 'C:/xampp/htdocs/Perfumewebsite_GR19-main/PHPMailer-master/src/PHPMailer.php';
-require 'C:/xampp/htdocs/Perfumewebsite_GR19-main/PHPMailer-master/src/SMTP.php';
+ 
+        // === 1. Error handler personalizuar ===
+     function error_handler($errno, $errstr, $errfile, $errline) {
+    switch ($errno) {
+        case E_USER_ERROR:
+            $tipi = "Gabim serioz";
+            break;
+        case E_USER_WARNING:
+            $tipi = "Kujdes (Warning)";
+            break;
+        case E_USER_NOTICE:
+            $tipi = "Njoftim (Notice)";
+            break;
+        default:
+            $tipi = "Gabim i panjohur";
+    }
+    echo "<p style='color:red;'>[$tipi] ($errno): $errstr në rreshtin $errline të fajllit $errfile</p>";
+}
+set_error_handler("error_handler");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $emri = htmlspecialchars($_POST['emri'], ENT_QUOTES, 'UTF-8');
-    $mesazhi = htmlspecialchars($_POST['mesazhi'], ENT_QUOTES, 'UTF-8');  
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Email jo valid!");
-    }
-
-    $mail = new PHPMailer(true);
-
     try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'erisaramadani20@gmail.com';      // Vendos emailin Gmail tënd këtu
-        $mail->Password = 'hhed ncxu zvxa cnit';        // Vendos këtu App Password
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $emri = htmlspecialchars($_POST['emri'], ENT_QUOTES, 'UTF-8');
+        $mesazhi = htmlspecialchars($_POST['mesazhi'], ENT_QUOTES, 'UTF-8');
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-        $mail->setFrom('yourgmail@gmail.com', 'Faqja Kontakt');
-        $mail->addAddress('erisaramadani20@gmail.com');
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("Email jo valid!");
+        }
 
-        $mail->Subject = 'Mesazh nga kontakt forma';
-        $mail->Body    = "Emri: $emri\nEmail: $email\n\nMesazhi:\n$mesazhi";
+        $to = "erisaramadani20@gmail.com";
+        $subject = "Mesazh nga kontakt forma";
+        $body = "Emri: $emri\nEmail: $email\n\nMesazhi:\n$mesazhi";
 
-        $mail->send();
-        echo "Mesazhi u dërgua me sukses!";
-          
-// === Ruajtja e mesazhit në fajll mesazhet.txt ===
-$log = "Emri: $emri\nEmail: $email\nMesazhi: $mesazhi\n--------------------------\n";
-file_put_contents("mesazhet.txt", $log, FILE_APPEND);
+        $headers = "From: $email\r\n";
+        $headers .= "Reply-To: $email\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        if (!mail($to, $subject, $body, $headers)) {
+            throw new Exception("<p style='color:red;'>Dërgimi i mesazhit dështoi.</p>");
+        }
+
+        echo "<p style='color:green;'>Mesazhi u dërgua me sukses!</p>";
+
+        // Ruajtja e mesazhit në fajll me fopen, fwrite, fclose
+        $logFile = "mesazhet.txt";
+        $handle = fopen($logFile, "a");
+        if (!$handle) {
+            throw new Exception("Nuk mund të hapet fajlli për shkrim.");
+        }
+        $log = "Emri: $emri\nEmail: $email\nMesazhi: $mesazhi\n--------------------------\n";
+        fwrite($handle, $log);
+        fclose($handle);
 
     } catch (Exception $e) {
-        echo "Gabim në dërgim: {$mail->ErrorInfo}";
+        echo "<p style='color:red;'>Gabim: " . $e->getMessage() . "</p>";
     }
 }
         ?>
@@ -81,8 +86,7 @@ file_put_contents("mesazhet.txt", $log, FILE_APPEND);
 
             <button type="submit" class="button-style">Dërgo</button>
 
-            <a href="javascript:history.back()" class="back-button">← Back</a>
-
+            <a href="index.php" class="back-button">← Back</a>
         </form>
     </div>
 </body>
