@@ -57,6 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $mail->send();
         echo "Mesazhi u dërgua me sukses!";
+          
+// === Ruajtja e mesazhit në fajll mesazhet.txt ===
+$log = "Emri: $emri\nEmail: $email\nMesazhi: $mesazhi\n--------------------------\n";
+file_put_contents("mesazhet.txt", $log, FILE_APPEND);
+
     } catch (Exception $e) {
         echo "Gabim në dërgim: {$mail->ErrorInfo}";
     }
@@ -75,6 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea id="mesazhi" name="mesazhi" rows="5" required></textarea>
 
             <button type="submit" class="button-style">Dërgo</button>
+
+            <a href="javascript:history.back()" class="back-button">← Back</a>
+
         </form>
     </div>
 </body>
