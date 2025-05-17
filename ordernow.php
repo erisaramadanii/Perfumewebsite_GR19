@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,29 +129,78 @@
     <h2>Order Now</h2>
     <p class="tagline">The fragrance you're ordering will become part of your unique style.</p>
 
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $first_name = htmlspecialchars($_POST['first_name']);
-        $last_name = htmlspecialchars($_POST['last_name']);
-        $country = htmlspecialchars($_POST['country']);
-        $address = htmlspecialchars($_POST['address']);
-        $city = htmlspecialchars($_POST['city']);
-        $zipcode = htmlspecialchars($_POST['zipcode']);
-        $phone = htmlspecialchars($_POST['phone']);
-        $email = htmlspecialchars($_POST['email']);
-        $payment_method = htmlspecialchars($_POST['payment_method']);
-        $delivery_method = htmlspecialchars($_POST['delivery_method']);
+   <?php
 
-        echo "<div class='success'>
-                Thank you, $first_name $last_name! Here are the details of your order:<br>
-                <strong>Email:</strong> $email <br>
-                <strong>Phone Number:</strong> $phone <br>
-                <strong>Address:</strong> $address, $city, $country, $zipcode <br>
-                <strong>Payment Method:</strong> $payment_method <br>
-                <strong>Delivery Service:</strong> $delivery_method <br>
-              </div>";
-    } else {
-    ?>
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'C:/xampp/htdocs/Perfumewebsite_GR19-main/PHPMailer-master/src/Exception.php';
+require 'C:/xampp/htdocs/Perfumewebsite_GR19-main/PHPMailer-master/src/PHPMailer.php';
+require 'C:/xampp/htdocs/Perfumewebsite_GR19-main/PHPMailer-master/src/SMTP.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = htmlspecialchars($_POST['first_name']);
+    $last_name = htmlspecialchars($_POST['last_name']);
+    $country = htmlspecialchars($_POST['country']);
+    $address = htmlspecialchars($_POST['address']);
+    $city = htmlspecialchars($_POST['city']);
+    $zipcode = htmlspecialchars($_POST['zipcode']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $email = htmlspecialchars($_POST['email']);
+    $payment_method = htmlspecialchars($_POST['payment_method']);
+    $delivery_method = htmlspecialchars($_POST['delivery_method']);
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';  
+        $mail->SMTPAuth = true;
+        $mail->Username = 'erisaramadani20@gmail.com';
+        $mail->Password = 'hhed ncxu zvxa cnit'; // Replace me App Password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->setFrom('erisaramadani20@gmail.com', 'Order System');
+        $mail->addAddress($email, "$first_name $last_name");
+        $mail->addReplyTo('erisaramadani20@gmail.com', 'Order System');
+
+        $mail->isHTML(true);
+$mail->Subject = 'Order Confirmation';
+$mail->Body = "
+    <h2>Thank you for your order, $first_name $last_name!</h2>
+    <p>We have received your order and will contact you soon when your order arrives.</p>
+    <hr>
+    <h3>Order Summary:</h3>
+    <ul>
+        <li><strong>Email:</strong> $email</li>
+        <li><strong>Phone:</strong> $phone</li>
+        <li><strong>Address:</strong> $address, $city, $zipcode, $country</li>
+        <li><strong>Payment Method:</strong> $payment_method</li>
+        <li><strong>Delivery Method:</strong> $delivery_method</li>
+    </ul>
+    <p>We appreciate your trust in us.</p>
+    <br>
+    <p>Kind regards,<br><strong>Jean Paul Gaultier Store Team</strong></p>
+";
+
+        $mail->send();
+        echo "<div class='success'>Email sent successfully!</div>";
+    } catch (Exception $e) {
+        echo "<div class='error'>Email could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+    }
+
+    // Mesazhi që i shfaqet në faqe
+    echo "<div class='success'>
+            Thank you, $first_name $last_name! Your order has been received.<br>
+            <strong>Email:</strong> $email <br>
+            <strong>Phone Number:</strong> $phone <br>
+            <strong>Address:</strong> $address, $city, $country, $zipcode <br>
+            <strong>Payment Method:</strong> $payment_method <br>
+            <strong>Delivery Service:</strong> $delivery_method <br>
+          </div>";
+} else {
+?>
+
     
     <form method="POST" action="ordernow.php" onsubmit="return validateForm()">
         <div class="form-group">
@@ -176,20 +226,6 @@
         <select id="country" name="country" required>
             <option value="Kosovo">Kosovo</option>
             <option value="Albania">Albania</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Armenia">Armenia</option>
-            <option value="Austria">Austria</option>
-            <option value="Azerbaijan">Azerbaijan</option>
-            <option value="Belarus">Belarus</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-            <option value="Bulgaria">Bulgaria</option>
-            <option value="Croatia">Croatia</option>
-            <option value="Cyprus">Cyprus</option>
-            <option value="Czech Republic">Czech Republic</option>
-            <option value="Denmark">Denmark</option>
-            <option value="Estonia">Estonia</option>
-            <option value="Finland">Finland</option>
             <option value="France">France</option>
             <option value="Georgia">Georgia</option>
             <option value="Germany">Germany</option>
@@ -200,32 +236,7 @@
             <option value="Italy">Italy</option>
             <option value="Kazakhstan">Kazakhstan</option>
             <option value="Kosovo">Kosovo</option>
-            <option value="Latvia">Latvia</option>
-            <option value="Liechtenstein">Liechtenstein</option>
-            <option value="Lithuania">Lithuania</option>
-            <option value="Luxembourg">Luxembourg</option>
-            <option value="Malta">Malta</option>
-            <option value="Moldova">Moldova</option>
-            <option value="Monaco">Monaco</option>
-            <option value="Montenegro">Montenegro</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="North Macedonia">North Macedonia</option>
-            <option value="Norway">Norway</option>
-            <option value="Poland">Poland</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Romania">Romania</option>
-            <option value="Russia">Russia</option>
-            <option value="San Marino">San Marino</option>
-            <option value="Serbia">Serbia</option>
-            <option value="Slovakia">Slovakia</option>
-            <option value="Slovenia">Slovenia</option>
-            <option value="Spain">Spain</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Turkey">Turkey</option>
-            <option value="Ukraine">Ukraine</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Vatican City">Vatican City</option>
+           
         </select>
 
         <label for="address">Full Address:</label>
