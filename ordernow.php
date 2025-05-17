@@ -184,7 +184,7 @@ $mail->Body = "
 ";
 
         $mail->send();
-        echo "<div class='success'>Email sent successfully!</div>";
+        echo "<div class='success'>Confirmation email sent successfully!</div>";
     } catch (Exception $e) {
         echo "<div class='error'>Email could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
     }
