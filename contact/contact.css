@@ -1,0 +1,132 @@
+
+
+button {
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    background-color: #222;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+button {
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    background-color: #222;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+.contact-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #4b5730;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+/* Titulli i faqes */
+.contact-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #222;
+}
+
+/* Label për inputet */
+.contact-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Input dhe textarea */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1.5px solid #908f8f;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Open Sans',    sans-serif;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+/* Kur inputet fokusohet */
+.contact-container input[type="text"]:focus,
+.contact-container input[type="email"]:focus,
+.contact-container textarea:focus {
+    border-color: #007BFF;  /* bluja bootstrap */
+    outline: none;
+}
+
+/* Butoni i dergimit */
+.contact-container button {
+    padding: 12px 25px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Hover për butonin */
+.contact-container button:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Active dhe focus për butonin */
+.contact-container button:active,
+.contact-container button:focus {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    outline: none;
+}
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #b30000;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+.back-button:hover {
+    background-color: #990000;
+}
