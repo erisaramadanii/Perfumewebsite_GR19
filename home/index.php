@@ -1,16 +1,4 @@
-<?php
 
-
-$search_results = [];
-if (isset($_GET['query'])) {
-    $query = strtolower($_GET['query']);
-    foreach ($products as $product) {
-        if (strpos(strtolower($product['name']), $query) !== false) {
-            $search_results[] = $product;
-        }
-    }
-}
-?>
     
 <?php
 if (isset($_GET['color'])) {
