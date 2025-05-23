@@ -20,6 +20,7 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
 </head>
 <body>
 <script src="script.js"></script>
+<body style="background-color: <?= htmlspecialchars($bg) ?>; transition: background-color 0.5s;">
     <div class="intro-video">
         <video autoplay muted loop playsinline>
             <source src="Images/intro.mp4" type="video/mp4">
