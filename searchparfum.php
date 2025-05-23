@@ -104,12 +104,15 @@ switch ($sort) {
             <option value="100">100ml</option>
         </select>
         <p>Çmimi total: €<span id="totalPrice">0.00</span></p>
+        <p>Ky parfim eshte klikuar: <span id="totalchoose">0</span></p>
         <button onclick="porosit()">Porosit</button>
     </div>
 </div>
 
+
 <script>
     let basePrice = 0;
+    const clickCounts = {};
 
     function openModal(name, image, price) {
         document.getElementById("productModal").style.display = "flex";
@@ -120,6 +123,16 @@ switch ($sort) {
         document.getElementById("quantity").value = 1;
         document.getElementById("ml").value = 50;
         calculateTotal();
+
+        // Rritja e klikimeve për këtë parfum
+        if (!clickCounts[name]) {
+            clickCounts[name] = 1;
+        } else {
+            clickCounts[name]++;
+        }
+
+        // Shfaqja e klikimeve në modal
+        document.getElementById("totalchoose").textContent = clickCounts[name];
     }
 
     function closeModal() {
@@ -144,6 +157,9 @@ switch ($sort) {
         window.location.href = url;
     }
 </script>
+
+
+
 </body>
 </html>
 
