@@ -1,3 +1,35 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['remember'])) {
+        // Fushat që do të ruhen në cookies
+        $fields = ['first_name', 'last_name', 'phone', 'email', 'country', 'address', 'city', 'zipcode', 'payment_method', 'delivery_method'];
+
+        // Ruaj të gjitha vlerat në cookies për 30 ditë
+        foreach ($fields as $field) {
+            if (isset($_POST[$field])) {
+                setcookie($field, $_POST[$field], time() + (30 * 24 * 60 * 60), "/");
+            }
+        }
+    } else {
+        // Nëse "Më mbaj mend" nuk është zgjedhur, fshij cookies ekzistuese
+        $fields = ['first_name', 'last_name', 'phone', 'email', 'country', 'address', 'city', 'zipcode', 'payment_method', 'delivery_method'];
+
+        foreach ($fields as $field) {
+            setcookie($field, '', time() - 3600, "/");
+        }
+    }
+
+    // Këtu mund të vazhdosh me përpunimin e porosisë (ruajtje në DB, etj.)
+    // ...
+
+    // Redirect në një faqe tjetër nëse do, për shembull:
+    // header("Location: confirmation.php");
+    // exit;
+}
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -200,76 +232,86 @@ $mail->Body = "
           </div>";
 } else {
 ?>
-
-    
-    <form method="POST" action="ordernow.php" onsubmit="return validateForm()">
-        <div class="form-group">
-            <div>
-                <label for="first_name">First Name:</label>
-                <input type="text" id="first_name" name="first_name" required>
-            </div>
-            <div>
-                <label for="last_name">Last Name:</label>
-                <input type="text" id="last_name" name="last_name" required>
-            </div>
-            <div>
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+<form method="POST" action="ordernow.php" onsubmit="return validateForm()">
+    <div class="form-group">
+        <div>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="<?php echo $_COOKIE['first_name'] ?? ''; ?>" required>
         </div>
-
-        <label for="country">Country:</label>
-        <select id="country" name="country" required>
-            <option value="Kosovo">Kosovo</option>
-            <option value="Albania">Albania</option>
-            <option value="France">France</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Germany">Germany</option>
-            <option value="Greece">Greece</option>
-            <option value="Hungary">Hungary</option>
-            <option value="Iceland">Iceland</option>
-            <option value="Ireland">Ireland</option>
-            <option value="Italy">Italy</option>
-            <option value="Kazakhstan">Kazakhstan</option>
-            <option value="Kosovo">Kosovo</option>
-           
-        </select>
-
-        <label for="address">Full Address:</label>
-        <textarea id="address" name="address" required></textarea>
-
-        <div class="form-group">
-            <div>
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" required>
-            </div>
-            <div>
-                <label for="zipcode">Postal Code:</label>
-                <input type="text" id="zipcode" name="zipcode" required>
-            </div>
+        <div>
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="<?php echo $_COOKIE['last_name'] ?? ''; ?>" required>
         </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" value="<?php echo $_COOKIE['phone'] ?? ''; ?>" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo $_COOKIE['email'] ?? ''; ?>" required>
+        </div>
+    </div>
 
-        <label for="payment_method">Payment Method:</label>
-        <select id="payment_method" name="payment_method" required>
-            <option value="Credit/Debit Card">Credit/Debit Card</option>
-            <option value="PayPal">PayPal</option>
-            <option value="Bank Transfer">Bank Transfer</option>
-        </select>
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+        <?php
+        $countries = ["Kosovo", "Albania", "France", "Georgia", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kazakhstan"];
+        $selectedCountry = $_COOKIE['country'] ?? '';
+        foreach ($countries as $country) {
+            $selected = ($country == $selectedCountry) ? 'selected' : '';
+            echo "<option value=\"$country\" $selected>$country</option>";
+        }
+        ?>
+    </select>
 
-        <label for="delivery_method">Delivery Service:</label>
-        <select id="delivery_method" name="delivery_method" required>
-            <option value="Standard">Standard</option>
-            <option value="Express">Express</option>
-        </select>
+    <label for="address">Full Address:</label>
+    <textarea id="address" name="address" required><?php echo $_COOKIE['address'] ?? ''; ?></textarea>
 
-        <input type="submit" value="Submit Order">
-    </form>
+    <div class="form-group">
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" value="<?php echo $_COOKIE['city'] ?? ''; ?>" required>
+        </div>
+        <div>
+            <label for="zipcode">Postal Code:</label>
+            <input type="text" id="zipcode" name="zipcode" value="<?php echo $_COOKIE['zipcode'] ?? ''; ?>" required>
+        </div>
+    </div>
+
+    <label for="payment_method">Payment Method:</label>
+    <select id="payment_method" name="payment_method" required>
+        <?php
+        $payments = ["Credit/Debit Card", "PayPal", "Bank Transfer"];
+        $selectedPayment = $_COOKIE['payment_method'] ?? '';
+        foreach ($payments as $method) {
+            $selected = ($method == $selectedPayment) ? 'selected' : '';
+            echo "<option value=\"$method\" $selected>$method</option>";
+        }
+        ?>
+    </select>
+
+    <label for="delivery_method">Delivery Service:</label>
+    <select id="delivery_method" name="delivery_method" required>
+        <?php
+        $deliveries = ["Standard", "Express"];
+        $selectedDelivery = $_COOKIE['delivery_method'] ?? '';
+        foreach ($deliveries as $method) {
+            $selected = ($method == $selectedDelivery) ? 'selected' : '';
+            echo "<option value=\"$method\" $selected>$method</option>";
+        }
+        ?>
+    </select>
+
+    <label>
+        <input type="checkbox" name="remember" <?php if (isset($_COOKIE['first_name'])) echo 'checked'; ?>>
+        Më mbaj mend
+    </label>
+
+    <input type="submit" value="Submit Order">
+</form>
     <?php } ?>
 </div>
 
 </body>
 </html>
+
