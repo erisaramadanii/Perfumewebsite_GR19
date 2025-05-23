@@ -37,7 +37,7 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
              <a href="?color=grey" title="Dark mode">🌙</a>
              <a href="?color=white" title="Light mode">☀️</a>
               </li>
-            <li><a href="home.php">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="Products.php">Products</a></li>
             <li><a href="BestSellers.php">Best Sellers</a></li>
             <!-- Butoni për kërkim -->
@@ -74,8 +74,7 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
         <a id = "logo" href="#">Jean Paul Gaultier</a>
         <div class="nav-bar-links">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-<!--                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
--->              </svg>
+             </svg>
         </div>
     </nav>
     
