@@ -15,10 +15,8 @@ $products = [
     new MenProduct("SCANDAL INTENSE", "Images/photo14.jpg", 113.99),
     new MenProduct("SCANDAL ABSOLUT", "Images/photo15.jpg", 170.99),
     new MenProduct("SCANDAL LE PARFUM", "Images/photo16.jpg", 199.99),
-
 ];
 
-// Global variable për query
 $query = isset($_GET['query']) ? strtolower($_GET['query']) : '';
 $sort = $_GET['sort'] ?? '';
 $results = [];
@@ -29,12 +27,10 @@ foreach ($products as $product) {
     }
 }
 
-// Demonstrim: përdorim var_dump()
 if ($query === "test") {
     $products[0]->debug();
 }
 
-// Demonstrim: array sortime
 switch ($sort) {
     case 'price_asc':
         usort($results, fn($a, $b) => $a->getPrice() <=> $b->getPrice());
@@ -81,6 +77,14 @@ switch ($sort) {
                 <div class="product-info">
                     <h3><?php echo $product->getName(); ?> (<?php echo $product->getCategory(); ?>)</h3>
                     <p class="price">€<?php echo number_format($product->getPrice(), 2); ?></p>
+                    <form method="post" action="cart.php">
+                        <input type="hidden" name="name" value="<?php echo htmlspecialchars($product->getName()); ?>">
+                        <input type="hidden" name="image" value="<?php echo $product->getImage(); ?>">
+                        <input type="hidden" name="price" value="<?php echo $product->getPrice(); ?>">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="ml" value="50">
+                        <button type="submit">Shto në shportë 🛒</button>
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -109,7 +113,6 @@ switch ($sort) {
     </div>
 </div>
 
-
 <script>
     let basePrice = 0;
     const clickCounts = {};
@@ -124,14 +127,12 @@ switch ($sort) {
         document.getElementById("ml").value = 50;
         calculateTotal();
 
-        // Rritja e klikimeve për këtë parfum
         if (!clickCounts[name]) {
             clickCounts[name] = 1;
         } else {
             clickCounts[name]++;
         }
 
-        // Shfaqja e klikimeve në modal
         document.getElementById("totalchoose").textContent = clickCounts[name];
     }
 
@@ -158,8 +159,5 @@ switch ($sort) {
     }
 </script>
 
-
-
 </body>
 </html>
-
