@@ -101,6 +101,9 @@ $GLOBALS['pageTitle'] = "Gift Sets";
 
   <label>Price (€):</label><br>
   <input type="text" name="price" required><br>
+  
+   <label>Image path:</label><br>
+  <input type="text" name="image" placeholder="Images/myimage.jpg" required><br><br>
 
   <input type="submit" value="Add Gift Set">
 </form>
