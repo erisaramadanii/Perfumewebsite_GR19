@@ -1,5 +1,3 @@
-
-    
 <?php
 if (isset($_GET['color'])) {
     setcookie("background", $_GET['color'], time() + (86400 * 30), "/");
@@ -20,7 +18,7 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
 </head>
 <body>
 <script src="script.js"></script>
-<body style="background-color: <?= htmlspecialchars($bg) ?>; transition: background-color 0.5s;">
+<body style="background-color: <?= htmlspecialchars($bg) ?>; transition: background-color 0.5s;"></body>
     <div class="intro-video">
         <video autoplay muted loop playsinline>
             <source src="Images/intro.mp4" type="video/mp4">
@@ -216,5 +214,7 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
                 
         </div>
     </footer>
+    <?php include 'cookies.php'; ?>
+
 </body>
 </html>
