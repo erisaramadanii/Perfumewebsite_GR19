@@ -1,15 +1,27 @@
- <!DOCTYPE html>
+<?php
+// Përdorimi i cookies për ndërrimin e temës
+if (isset($_GET['theme'])) {
+    setcookie("theme", $_GET['theme'], time() + 3600, "/");
+    $_COOKIE['theme'] = $_GET['theme']; // Për përdorim të menjëhershëm
+}
+
+$theme = $_COOKIE['theme'] ?? 'light';
+$background = $theme === 'dark' ? '#222' : '#fff5f5';
+$color = $theme === 'dark' ? '#eee' : '#222';
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gifting </title>
+    <title>Gifting</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Georgia', serif;
-            background-color: #fff5f5;
-            color: #222;
+            background-color: <?= $background ?>;
+            color: <?= $color ?>;
         }
 
         .container {
@@ -63,91 +75,97 @@
         <a href="for-him.php" class="gift-option">🕴️ For Him</a>
         <a href="birthday-gifts.php" class="gift-option">🎂 Birthday Gifts</a>
     </div>
+
+    <br><br>
+    <div>
+        <a href="?theme=light">Light Theme</a> | <a href="?theme=dark">Dark Theme</a>
+    </div>
+
+    <hr><br>
+
+    <?php
+    // Klasa për një dhuratë (gift item)
+    class GiftItem {
+        private $name;
+        private $price;
+
+        public function __construct($name, $price) {
+            $this->setName($name);
+            $this->setPrice($price);
+        }
+
+        public function setName($name) {
+            if (preg_match("/^[A-Za-z\s]{2,50}$/", $name)) {
+                $this->name = $name;
+            } else {
+                throw new Exception("Emri nuk është valid!");
+            }
+        }
+
+        public function getName() {
+            return $this->name;
+        }
+
+        public function setPrice($price) {
+            if (preg_match("/^\d+(\.\d{1,2})?$/", $price)) {
+                $this->price = $price;
+            } else {
+                throw new Exception("Çmimi nuk është valid!");
+            }
+        }
+
+        public function getPrice() {
+            return $this->price;
+        }
+
+        public function display() {
+            return "Emri: " . $this->name . " - Çmimi: €" . $this->price;
+        }
+    }
+
+    $gifts = [];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $emri = $_POST['emri'] ?? '';
+        $cmimi = $_POST['cmimi'] ?? '';
+
+        try {
+            $gift = new GiftItem($emri, $cmimi);
+            $gifts[] = $gift;
+            echo "<p style='color:green;'>Shtimi u krye me sukses!</p>";
+
+            // Simulim i dërgimit të emailit
+            $to = "example@example.com";
+            $subject = "Dhuratë e re shtuar";
+            $message = "U shtua dhurata: $emri me çmim €$cmimi.";
+            $headers = "From: webmaster@example.com";
+            @mail($to, $subject, $message, $headers);
+        } catch (Exception $e) {
+            echo "<p style='color:red;'>Gabim: " . $e->getMessage() . "</p>";
+        }
+    }
+    ?>
+
+    <h2>Shto një dhuratë të re</h2>
+    <form method="POST">
+        <label>Emri i dhuratës:</label><br>
+        <input type="text" name="emri" required><br><br>
+
+        <label>Çmimi (€):</label><br>
+        <input type="text" name="cmimi" required><br><br>
+
+        <input type="submit" value="Shto">
+    </form>
+
+    <?php
+    if (!empty($gifts)) {
+        echo "<h3>Lista e dhuratave:</h3><ul>";
+        foreach ($gifts as $gift) {
+            echo "<li>" . $gift->display() . "</li>";
+        }
+        echo "</ul>";
+    }
+    ?>
 </div>
-<?php
-// Klasa për një dhuratë (gift item)
-class GiftItem {
-    private $name;
-    private $price;
-
-    public function __construct($name, $price) {
-        $this->setName($name);
-        $this->setPrice($price);
-    }
-
-    // Set dhe Get për emrin
-    public function setName($name) {
-        if (preg_match("/^[A-Za-z\s]{2,50}$/", $name)) {
-            $this->name = $name;
-        } else {
-            throw new Exception("Emri nuk është valid!");
-        }
-    }
-
-    public function getName() {
-        return $this->name;
-    }
-
-    // Set dhe Get për çmimin
-    public function setPrice($price) {
-        if (preg_match("/^\d+(\.\d{1,2})?$/", $price)) {
-            $this->price = $price;
-        } else {
-            throw new Exception("Çmimi nuk është valid!");
-        }
-    }
-
-    public function getPrice() {
-        return $this->price;
-    }
-
-    public function display() {
-        return "Emri: " . $this->name . " - Çmimi: €" . $this->price;
-    }
-}
-
-// Shembull: lista e dhuratave
-$gifts = [];
-
-// Nëse forma është dërguar
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $emri = $_POST['emri'] ?? '';
-    $cmimi = $_POST['cmimi'] ?? '';
-
-    try {
-        $gift = new GiftItem($emri, $cmimi);
-        $gifts[] = $gift;
-        echo "<p style='color:green;'>Shtimi u krye me sukses!</p>";
-    } catch (Exception $e) {
-        echo "<p style='color:red;'>Gabim: " . $e->getMessage() . "</p>";
-    }
-}
-?>
-
-<!-- Forma për shtimin e dhuratave -->
-<h2>Add a new gift</h2>
-<form method="POST">
-    <label>Name of the gift:</label><br>
-    <input type="text" name="emri" required><br><br>
-
-    <label>Price (€):</label><br>
-    <input type="text" name="cmimi" required><br><br>
-
-    <input type="submit" value="Shto">
-</form>
-
-<!-- Afisho dhuratat e futura -->
-<?php
-if (!empty($gifts)) {
-    echo "<h3>Lista e dhuratave:</h3><ul>";
-    foreach ($gifts as $gift) {
-        echo "<li>" . $gift->display() . "</li>";
-    }
-    echo "</ul>";
-}
-?>
 
 </body>
 </html>
- 
-
