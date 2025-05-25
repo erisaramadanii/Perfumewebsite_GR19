@@ -1,7 +1,50 @@
 <?php
-require_once 'product.php';
+session_start();
 
-// Array multidimensional me produkte
+if (isset($_POST['clear_clicks'])) {
+    unset($_SESSION['clicks']);
+    // Redirect për të shmangur rifreskimin e POST
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+require_once 'product.php';
+?>
+
+<!-- Seksioni për statistikat -->
+<div style="margin-top: 50px; padding: 20px; background-color: #f7f7f7; border-top: 2px solid #ccc;">
+    <h2 style="text-align: center;">📊 Statistikat e Klikimeve për Parfume</h2>
+    <ul style="list-style: none; padding: 0; text-align: center; font-size: 18px;">
+        <?php
+        if (isset($_SESSION['clicks']) && count($_SESSION['clicks']) > 0) {
+            arsort($_SESSION['clicks']); // rendit nga më i klikuari
+            $topParfum = array_key_first($_SESSION['clicks']);
+            $topClicks = $_SESSION['clicks'][$topParfum];
+            echo "<p style='text-align:center; font-weight:bold;'>👑 Parfumi më i klikuar: <span style='color:darkblue;'>$topParfum</span> me <span style='color:darkred;'>$topClicks klikime</span>.</p>";
+            echo "<ul style='list-style:none; padding:0;'>";
+            foreach ($_SESSION['clicks'] as $parfum => $clicks) {
+                echo "<li><strong>$parfum</strong> → $clicks klikime</li>";
+            }
+            echo "</ul>";
+        } else {
+            echo "<li>Asnjë parfum nuk është klikuar ende.</li>";
+        }
+        ?>
+    </ul>
+    <div style="text-align:center; margin-top: 20px;">
+    <button onclick="location.reload();" style="padding: 10px 20px; cursor: pointer;">
+        🔄 Refresh për të parë klikimet
+    </button>
+</div>
+</div>
+<form method="post" style="text-align: center; margin-bottom: 20px;">
+    <button type="submit" name="clear_clicks" style="padding: 10px 20px; background-color: #e74c3c; color: white; border: none; cursor: pointer;">
+        🗑️ Fshij Klikimet
+    </button>
+</form>
+
+
+<?php
+// Produktet
 $products = [
     new WomenProduct("SCANDAL INTENSE", "Images/photo5.png", 174.30),
     new WomenProduct("SCANDAL ABSOLUT", "Images/photo6.jpg", 208.00),
@@ -17,6 +60,7 @@ $products = [
     new MenProduct("SCANDAL LE PARFUM", "Images/photo16.jpg", 199.99),
 ];
 
+// Filtrim dhe renditje
 $query = isset($_GET['query']) ? strtolower($_GET['query']) : '';
 $sort = $_GET['sort'] ?? '';
 $results = [];
@@ -25,10 +69,6 @@ foreach ($products as $product) {
     if (strpos(strtolower($product->getName()), $query) !== false) {
         $results[] = $product;
     }
-}
-
-if ($query === "test") {
-    $products[0]->debug();
 }
 
 switch ($sort) {
@@ -92,7 +132,6 @@ switch ($sort) {
         <p>Nuk u gjet asnjë produkt për "<?php echo htmlspecialchars($query); ?>".</p>
     <?php endif; ?>
 </div>
-
 <!-- Modal -->
 <div id="productModal" class="modal" style="display:none;">
     <div class="modal-content">
@@ -108,33 +147,32 @@ switch ($sort) {
             <option value="100">100ml</option>
         </select>
         <p>Çmimi total: €<span id="totalPrice">0.00</span></p>
-        <p>Ky parfim eshte klikuar: <span id="totalchoose">0</span></p>
+        <p>Ky parfum është klikuar: <span id="totalchoose">0</span></p>
         <button onclick="porosit()">Porosit</button>
     </div>
 </div>
 
 <script>
     let basePrice = 0;
-    const clickCounts = {};
 
-    function openModal(name, image, price) {
-        document.getElementById("productModal").style.display = "flex";
-        document.getElementById("modalName").textContent = name;
-        document.getElementById("modalImage").src = image;
-        document.getElementById("basePrice").textContent = price.toFixed(2);
-        basePrice = price;
-        document.getElementById("quantity").value = 1;
-        document.getElementById("ml").value = 50;
-        calculateTotal();
+   function openModal(name, image, price) {
+    // Shto kërkesën për të rritur klikimin
+    fetch(`track_click.php?name=${encodeURIComponent(name)}&increment=1`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("totalchoose").textContent = data.clicks;
+        });
 
-        if (!clickCounts[name]) {
-            clickCounts[name] = 1;
-        } else {
-            clickCounts[name]++;
-        }
+    document.getElementById("productModal").style.display = "flex";
+    document.getElementById("modalName").textContent = name;
+    document.getElementById("modalImage").src = image;
+    document.getElementById("basePrice").textContent = price.toFixed(2);
+    basePrice = price;
+    document.getElementById("quantity").value = 1;
+    document.getElementById("ml").value = 50;
+    calculateTotal();
+}
 
-        document.getElementById("totalchoose").textContent = clickCounts[name];
-    }
 
     function closeModal() {
         document.getElementById("productModal").style.display = "none";
@@ -153,7 +191,6 @@ switch ($sort) {
         const quantity = document.getElementById("quantity").value;
         const ml = document.getElementById("ml").value;
         const totalPrice = document.getElementById("totalPrice").textContent;
-
         const url = `ordernow.php?name=${name}&quantity=${quantity}&ml=${ml}&total=${totalPrice}`;
         window.location.href = url;
     }
