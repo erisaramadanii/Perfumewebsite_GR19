@@ -6,12 +6,17 @@ if (!isset($_SESSION['shporta'])) {
     $_SESSION['shporta'] = [];
 }
 
+// Funksion për të ruajtur parfum në shportë
+function ruajNeShporte($item) {
+    $_SESSION['shporta'][] = $item;
+}
+
 // Hiq parfum nga shporta sipas indexit
 if (isset($_POST['remove']) && isset($_POST['index'])) {
     $index = $_POST['index'];
     if (isset($_SESSION['shporta'][$index])) {
         unset($_SESSION['shporta'][$index]);
-        $_SESSION['shporta'] = array_values($_SESSION['shporta']); // Rindekso array-n
+        $_SESSION['shporta'] = array_values($_SESSION['shporta']);
     }
     header("Location: cart.php");
     exit();
@@ -34,7 +39,6 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
         'ml' => intval($_POST['ml'])
     ];
 
-    // Kontrollo nëse ekziston i njëjti parfum me të njëjtin ml
     $alreadyExists = false;
     foreach ($_SESSION['shporta'] as $item) {
         if ($item['name'] === $newItem['name'] && $item['ml'] === $newItem['ml']) {
@@ -44,9 +48,10 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
     }
 
     if (!$alreadyExists) {
-        $_SESSION['shporta'][] = $newItem;
+        ruajNeShporte($newItem);
+        $_SESSION['alert'] = "✅ Parfumi u shtua me sukses në shportë!";
     } else {
-        $_SESSION['alert'] = "Ky parfum është tashmë në shportë.";
+        $_SESSION['alert'] = "⚠️ Ky parfum është tashmë në shportë.";
     }
 
     header("Location: cart.php");
@@ -64,14 +69,14 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right,rgb(227, 138, 191), #f0e6e6);
+            background: linear-gradient(to right, #f4d8e4, #fbeff4);
             color: #333;
         }
 
         h1 {
             text-align: center;
             color: white;
-            background-color:rgb(204, 51, 158);
+            background-color: #c94fa7;
             padding: 20px;
             border-radius: 0 0 15px 15px;
             animation: fadeInDown 1s ease-in-out;
@@ -79,32 +84,26 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .product-card {
             border: 1px solid #ccc;
-            margin: 10px;
-            padding: 10px;
+            margin: 15px;
+            padding: 15px;
             width: 230px;
             display: inline-block;
             vertical-align: top;
             text-align: center;
             position: relative;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
         }
 
         .product-card:hover {
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             transition: 0.3s;
         }
 
@@ -123,12 +122,6 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
         .actions {
             text-align: center;
             margin: 30px 0;
-        }
-
-        .actions form,
-        .actions a {
-            display: inline-block;
-            margin: 5px;
         }
 
         .empty-cart {
@@ -156,11 +149,35 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
             transition: background-color 0.3s ease;
             text-decoration: none;
             text-align: center;
-            width: fit-content;
         }
 
         .order-button:hover {
             background-color: #b266ff;
+        }
+
+        .product-card p {
+            margin: 8px 0;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+        }
+
+        .total-summary {
+            text-align: center;
+            font-size: 1.4em;
+            margin: 20px;
+            color: #5a005a;
+            background-color: #fff0fb;
+            padding: 15px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -176,25 +193,31 @@ if (isset($_SESSION['alert'])) {
 ?>
 
 <?php if (!empty($_SESSION['shporta'])): ?>
-    <?php foreach ($_SESSION['shporta'] as $index => $item): ?>
+    <?php 
+    $total = 0;
+    foreach ($_SESSION['shporta'] as $index => $item): 
+        $subtotal = $item['price'] * $item['quantity'];
+        if ($item['ml'] == 100) {
+            $subtotal *= 1.5;
+        }
+        $total += $subtotal;
+    ?>
         <div class="product-card">
             <form method="post" class="remove-btn">
                 <input type="hidden" name="index" value="<?php echo $index; ?>">
-                <button type="submit" name="remove">❌</button>
+                <button type="submit" name="remove" title="Hiqe nga shporta">❌</button>
             </form>
             <img src="<?php echo $item['image']; ?>" alt="Foto e parfumit">
             <h3><?php echo htmlspecialchars($item['name']); ?> (<?php echo $item['ml']; ?>ml)</h3>
             <p>Sasia: <?php echo $item['quantity']; ?></p>
             <p>Çmimi për copë: €<?php echo number_format($item['price'], 2); ?></p>
-            <?php
-                $cmimiTotal = $item['price'] * $item['quantity'];
-                if ($item['ml'] == 100) {
-                    $cmimiTotal *= 1.5;
-                }
-            ?>
-            <p><strong>Çmimi total: €<?php echo number_format($cmimiTotal, 2); ?></strong></p>
+            <p><strong>Çmimi total: €<?php echo number_format($subtotal, 2); ?></strong></p>
         </div>
     <?php endforeach; ?>
+
+    <div class="total-summary">
+        💰 Totali i porosisë: <strong>€<?php echo number_format($total, 2); ?></strong>
+    </div>
 <?php else: ?>
     <div class="empty-cart">
         🧺 Shporta është bosh për momentin. <br> Shto parfume për të vazhduar me porosinë!
@@ -217,4 +240,3 @@ if (isset($_SESSION['alert'])) {
 
 </body>
 </html>
-
