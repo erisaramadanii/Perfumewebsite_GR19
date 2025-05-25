@@ -203,7 +203,7 @@ if (isset($_SESSION['alert'])) {
         $total += $subtotal;
     ?>
         <div class="product-card">
-            <form method="post" class="remove-btn">
+            <form method="post" class="remove-btn" onsubmit="return confirm('A je e sigurt që do ta heqësh këtë parfum nga shporta?');">
                 <input type="hidden" name="index" value="<?php echo $index; ?>">
                 <button type="submit" name="remove" title="Hiqe nga shporta">❌</button>
             </form>
@@ -228,7 +228,7 @@ if (isset($_SESSION['alert'])) {
     <a href="searchparfum.php">🔍 Kthehu te kërkimi</a>
 
     <?php if (!empty($_SESSION['shporta'])): ?>
-        <form method="post">
+        <form method="post" onsubmit="return confirm('A je e sigurt që don me zbrazë krejt shportën?');">
             <button type="submit" name="clear">🗑️ Zbraze shportën</button>
         </form>
     <?php endif; ?>
