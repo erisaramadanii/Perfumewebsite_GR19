@@ -39,6 +39,9 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
         'ml' => intval($_POST['ml'])
     ];
 
+   if (count($_SESSION['shporta']) >= 4) {
+    $_SESSION['alert'] = "🚫 Nuk mund të vendosësh më shumë se 4 parfuma në shportë.";
+} else {
     $alreadyExists = false;
     foreach ($_SESSION['shporta'] as $item) {
         if ($item['name'] === $newItem['name'] && $item['ml'] === $newItem['ml']) {
@@ -53,6 +56,7 @@ if (isset($_POST['name'], $_POST['price'], $_POST['image'], $_POST['quantity'], 
     } else {
         $_SESSION['alert'] = "⚠️ Ky parfum është tashmë në shportë.";
     }
+}
 
     header("Location: cart.php");
     exit();
