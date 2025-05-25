@@ -214,7 +214,14 @@ $bg = isset($_COOKIE['background']) ? $_COOKIE['background'] : 'white';
             <p>Tel: (+12) 345 678 910</p>               
             <p>Email: info@jeanpaulgaultier.com</p>             
             <p>Address: 12345 MalYane Street, NYC, USA</p>
-                
+
+                 
+        <!-- Form Email Kërkimi -->
+            <form action="process_form.php" method="POST">
+                <label>Email:</label>
+                <input type="email" name="email" required>
+                <button type="submit">Kërko</button>
+            </form>
         </div>
     </footer>
 </body>
