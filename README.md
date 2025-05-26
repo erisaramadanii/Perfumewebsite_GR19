@@ -7,7 +7,6 @@ Stil i pastër dhe elegant me CSS të personalizuar.Formular kontakti me validim
 ---
 
 
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://supportukrainenow.org/)
 
 ![PHPMailer](https://raw.github.com/PHPMailer/PHPMailer/master/examples/images/phpmailer.png)
 
