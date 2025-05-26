@@ -166,9 +166,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:/xampp/htdocs/Perfumewebsite_GR19-master/src/Exception.php';
-require 'C:/xampp/htdocs/Perfumewebsite_GR19-master/src/PHPMailer.php';
-require 'C:/xampp/htdocs/Perfumewebsite_GR19-master/src/SMTP.php';
+require '/../src/Exception.php';
+require '/../src/PHPMailer.php';
+require '/../src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = htmlspecialchars($_POST['first_name']);
