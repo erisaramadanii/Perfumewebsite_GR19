@@ -4,8 +4,4 @@ Jean Paul Gaultier është një faqe dinamike për prezantimin dhe shitjen e par
 Kjo faqe përmban  katalog me parfume të kategorive të ndryshme.Kërkim sipas emrit, çmimit ose gjinisë.Faqe individuale për çdo parfum me përshkrim të detajuar.
 Stil i pastër dhe elegant me CSS të personalizuar.Formular kontakti me validim në PHP.Dizajn responsiv për desktop dhe mobile.
 ---
-<<<<<<< HEAD
-# Ky është README yt lokal
-=======
-# Ky është README nga GitHub
->>>>>>> main
+
